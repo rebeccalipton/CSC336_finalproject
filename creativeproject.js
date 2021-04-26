@@ -1,5 +1,6 @@
 (function () {
     "use strict";
+        var timeout = null;
     window.onload = function () {
 
         document.getElementById("start").onclick = form1;
@@ -21,14 +22,14 @@
 //        document.getElementById("libarts").onclick = showLA;
 //        
 //        document.getElementById("begin").onclick = startQuiz;
-
+        
 
     }
     
     //Time bar for Form1 where divs are an ID//
             var i = 0;
             function move() {
-              if (i == 0) {
+                console.log("hi")
                 i = 1;
                 var progress = document.getElementById("myBar");
                 var progress2 = document.getElementById("bar2");
@@ -37,7 +38,7 @@
                   console.log(progress2)
                   console.log(progress3)
                 var width = 1;
-                var timeout = setInterval(frame, 3000);
+                timeout = setInterval(frame, 3000);
                 function frame() {
                   if (width >= 30000) {
                     clearInterval(timeout);
@@ -49,12 +50,12 @@
                     progress2.style.width = width + "%";
                     progress3.style.width = width + "%";
                   }
-                }
               } 
             }
     
     function clearProgress(){
-        var i = 0;
+        clearInterval(timeout);
+        var width = 1;
         var progress = document.getElementById("myBar");
         var progress2 = document.getElementById("bar2");
         var progress3 = document.getElementById("bar3");
