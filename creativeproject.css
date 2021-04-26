@@ -1,0 +1,202 @@
+#title {
+  padding-top: 10px;
+    text-align: center;
+    margin-top: 350;
+    border: 2px solid black;
+    background-color: white;
+    height: 325px;
+    width: 725px;
+    margin-left: 270px;
+}
+
+
+body {
+    font-family: 'Karla', sans-serif;
+    background-image: url("college-students.jpeg");
+    background-repeat: no-repeat;
+}
+
+nav ul {
+  list-style-type: none;
+  background-color: black;
+    padding: 25px;
+    position: fixed;
+    margin-top: 0;
+    top: 0;
+    width: 1140;
+}
+
+nav li {
+    display: inline;
+    text-align: center;
+    padding: 40px 85px;
+}
+
+li a {
+    text-decoration: none;
+    color: white;
+    font-size: 20;
+
+}
+
+li a:hover {
+    color: blue;
+}
+
+
+
+img{
+    width: 180;
+}
+
+#sat{
+    margin-left: 825px;
+}
+
+button{
+    background-color: white;
+    font-weight: 600;
+    font-size: 17px;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+footer{
+    margin-top: 100px;
+    width: 1200;
+    background-color: white;
+    display: inline-block;
+}
+
+.hidden{
+  display: none;
+}
+
+#form1{
+    font-family: 'Karla', sans-serif;
+    background-image: url("college.jpg");
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+#form1>h1{
+    margin-top: 73px;
+    margin-left: 370px;
+    font-size: 32px;
+    background: white;
+    padding: 5px;
+    width: 370px;
+
+}
+
+#form1>.text{
+    margin-top: 0px;
+}
+
+#next1{
+    margin-left: 370px;
+    font-size: 16px;
+
+}
+
+#back1{
+    margin-top: 10px;
+    margin-left: 0px;
+    font-size: 16px;
+}
+
+
+#form2>h1, #form3>h1, #form4>h1{
+    margin-top: 73px;
+    margin-left: 360px;
+    font-size: 32px;
+    background: white;
+    padding: 5px;
+    width: 420px;
+}
+
+.text{
+    margin-top: 70px;
+    margin-left: 310px;
+    border: 3px solid black;
+    width: 500px;
+    padding: 10px;
+    background-color: white;
+}
+
+.text>p{
+    font-size: 18px;
+}
+
+#back2, #next2, #back3, #next3, #back4{
+    display: inline-block;
+    margin-top: 40px;
+    font-size: 16px;
+}
+
+#next2, #next3{
+    margin-left: 380px;
+}
+
+#form2{
+    background-image: url("map.jpg");
+    height:100%;
+    width:100%;
+    font-family: 'Karla', sans-serif;
+}
+
+#form3{
+   background-image: url("size.jpg");
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+#form4{
+   background-image: url("results.jpg");
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+#aboutus {
+    background-image: url(Kogod.jpg);
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+
+#libArt {
+    background-image: url(libART.jpg);
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+
+#uni {
+    background-image: url(uni.jpg);
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.resultList{
+    margin-top: 73px;
+    margin-left: 310px;
+    border: 10px solid blue;
+    width: 500px;
+    padding: 10px;
+    background-color: white;
+    font-size: 20px;
+}
+
+#myProgress {
+  width: 100%;
+  background-color: white;
+    border: 1px solid black;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: skyblue;
+}
