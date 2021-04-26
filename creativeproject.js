@@ -1,5 +1,7 @@
 (function () {
     "use strict";
+
+
     window.onload = function () {
 
         document.getElementById("start").onclick = form1;
@@ -15,16 +17,16 @@
         document.getElementById("back3").onclick = back3;
 
         document.getElementById("next3").onclick = next3;
-        
+
         document.getElementById("back4").onclick = back4;
-        
+
 //        document.getElementById("libarts").onclick = showLA;
-//        
+//
 //        document.getElementById("begin").onclick = startQuiz;
 
 
     }
-    
+
     //Time bar for Form1 where divs are an ID//
             var i = 0;
             function move() {
@@ -44,7 +46,7 @@
                     progress.style.width = width + "%";
                   }
                 }
-              } 
+              }
             }
         //Time bar for Form2 and 3 where divs are a class -> maybe need to make an array!!//
                 var i = 0;
@@ -66,10 +68,10 @@
                     progress.style.width = width + "%";
                   }
                 }
-              } 
+              }
             }
             }
-    
+
 //    function ClearMove(){
 //        var progress = document.getElementById("myBar");
 //        progress.style.width = "1%"
@@ -89,7 +91,7 @@
          document.querySelector("#main-view").classList.remove("hidden");
         document.querySelector("#form1").classList.add("hidden");
          document.querySelector("body").style.backgroundImage = "url(college-students.jpeg)";
-        
+
     }
 
     function next1 (){
@@ -126,24 +128,24 @@
 //        var t = document.createTextnode("Your Results: ");
 //        header.appendChild(t);
 //        document.getElementById("header").appendChild(header);
-//    
-//        //create element 2//  
+//
+//        //create element 2//
 //      let results = document.createElement("p");
 //      results.title = "results go here";
 //      document.getElementByClassName("resultList").appendChild(results);
-//        
-//         //create element 3//  
+//
+//         //create element 3//
 //      let helpnotice = document.createElement("p");
 //      helpnotice.title = "Need further help?";
 //      document.getElementById("help").appendChild(helpnotice);
     }
-    
+
     function back4 (){
         document.querySelector("#form3").classList.remove("hidden");
         document.querySelector("#form4").classList.add("hidden");
 
     }
-    
+
     function showLA(){
       var princetonLink = document.createElement("a");
       var princetonText = document.createTextNode("Princeton's Take on Liberal Arts");
@@ -174,8 +176,15 @@
   //   }
   // }
 
-    const url = "https://api.data.gov/ed/collegescorecard/v1/schools?api_key=1BrgxwOZt8gbORb2UlRu39hXhXV5Xjc3QCxQQwCg"
-    
+    //const url = "https://api.data.gov/ed/collegescorecard/v1/schools?api_key=1BrgxwOZt8gbORb2UlRu39hXhXV5Xjc3QCxQQwCg"
+
+    // rebecca api key
+    const url = "https://api.data.gov/ed/collegescorecard/v1/";
+    let field = ""; // changes with
+
+    // or https://api.data.gov/ed/collegescorecard/v1/schools.json?school.degrees_awarded.predominant=2,3&fields=id,school.name,2013.student.size&api_key=
+  // this works in browser: https://api.data.gov/ed/collegescorecard/v1/schools.json?school.degrees_awarded.predominant=2,3&fields=id,school.name,2013.student.size&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b
+    const api = "&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
     function fetchAdmission(){
         fetch(url)
         .then(checkStatus)
@@ -184,7 +193,7 @@
         console.log(data)
         });
     }
-    
+
       function checkStatus(response) {
         if (response.status >= 200 && response.status < 300 || response.status == 0) {
             return response.text();
@@ -192,4 +201,33 @@
         return Promise.reject(new Error(response.status + ": " + response.statusText));
         }
     }
+
+// q1: tuition price:
+// make note we are only calculating out of state tuition
+if tuition drop down.value = ""{
+  if consider schools below selected
+    if consider schools above selected
+      consider schools with TUITIONFEE_OUT between those values
+            if state == value{
+              filter api data to include schools in that state
+              variable is LOCATION , as reported in IPEDS (CITY, STABBR, ZIP).
+                if size (num of undergrad students) = dropdown value
+                  var is UGDS
+                    output head 5
+            }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 })();
