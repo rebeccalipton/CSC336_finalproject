@@ -46,11 +46,7 @@ li a:hover {
 
 
 img{
-    width: 180;
-}
-
-#sat{
-    margin-left: 825px;
+    width: 200;
 }
 
 button{
@@ -62,10 +58,25 @@ button{
 }
 
 footer{
+    background-color: white;
     margin-top: 100px;
     width: 1200;
-    background-color: white;
     display: inline-block;
+    color: black;
+    text-align: center;
+    font-family: 'Slabo 27px', serif;
+    font-size: 18px;
+}
+#usnews{
+    padding-top: 20px;
+   display: inline-flex;
+    float: left;
+}
+
+#sat{
+      display: inline-flex;
+    float: right;
+    margin-right: 20px;
 }
 
 .hidden{
@@ -139,7 +150,7 @@ footer{
 }
 
 #form2{
-    background-image: url("map.jpg");
+    background-image: url("SAT.jpg");
     height:100%;
     width:100%;
     font-family: 'Karla', sans-serif;

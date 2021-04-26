@@ -194,19 +194,20 @@
 
 // q1: tuition price:
 // make note we are only calculating out of state tuition
-if tuition drop down.value = ""{
-  if consider schools below selected
-    if consider schools above selected
-      consider schools with TUITIONFEE_OUT between those values
-            if state == value{
-              filter api data to include schools in that state
-              variable is LOCATION , as reported in IPEDS (CITY, STABBR, ZIP).
-                if size (num of undergrad students) = dropdown value
-                  var is UGDS
-                    output head 5
-            }
-
-
-}
+    
+//    if tuition drop down.value = ""{
+//  if consider schools below selected
+//    if consider schools above selected
+//      consider schools with TUITIONFEE_OUT between those values
+//            if state == value{
+//              filter api data to include schools in that state
+//              variable is LOCATION , as reported in IPEDS (CITY, STABBR, ZIP).
+//                if size (num of undergrad students) = dropdown value
+//                  var is UGDS
+//                    output head 5
+//            }
+//
+//
+//}
 
 })();
