@@ -6,6 +6,7 @@
     <script src="creativeproject.js"></script>
       <style>
           @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
 </style>
   </head> 
 
@@ -32,10 +33,16 @@
               <button type = "button" id = "start"> Start! </button>
   </header>
           <footer>
-          <a href="https://www.usnews.com/best-colleges/rankings/national-universities">
+            <a href="https://www.usnews.com/best-colleges/rankings/national-universities">
             <img id = "usnews" src = https://www.wane.com/wp-content/uploads/sites/21/2020/09/best-colleges.jpg alt = "US NEWS COLLEGE RANKING pic"></a>
-          <a href="https://collegereadiness.collegeboard.org/sat">
+            <a href="https://collegereadiness.collegeboard.org/sat">
             <img id = "sat" src = https://www.insidehighered.com/sites/default/server_files/media/SAT_2.jpg alt = "SAT pic"> </a>
+                <p>Authors: Arianna Cannon and Rebecca Lipton<br>
+                <a href="ao2646a@american.edu">ao2646a@american.edu</a> <br> <a href="rl5207a@student.american.edu">rl5207a@student.american.edu </a></p>
+              <p> 
+            4400 Massachusetts Ave NW, Washington, DC 20016 </p>
+             <p> Created by two Computer Science students at American University </p> <br>
+ 
   </footer>
   </section>
       
@@ -91,8 +98,20 @@
         <button type = "button" id = "back1"> Back </button>
         <button type = "button" id = "next1"> Next </button>
       </div>
+       <footer>
+            <a href="https://www.usnews.com/best-colleges/rankings/national-universities">
+            <img id = "usnews" src = https://www.wane.com/wp-content/uploads/sites/21/2020/09/best-colleges.jpg alt = "US NEWS COLLEGE RANKING pic"></a>
+            <a href="https://collegereadiness.collegeboard.org/sat">
+            <img id = "sat" src = https://www.insidehighered.com/sites/default/server_files/media/SAT_2.jpg alt = "SAT pic"> </a>
+                <p>Authors: Arianna Cannon and Rebecca Lipton<br>
+                <a href="ao2646a@american.edu">ao2646a@american.edu</a> <br> <a href="rl5207a@student.american.edu">rl5207a@student.american.edu </a></p>
+              <p> 
+            4400 Massachusetts Ave NW, Washington, DC 20016 </p>
+             <p> Created by two Computer Science students at American University </p> <br>
+ 
+  </footer>
 </section>
-
+      
       <section id="form2" class= "hidden">
             <nav>
           <ul>
@@ -102,74 +121,36 @@
             <li><a href="aboutusColleges.html">About Us</a></li>
           </ul>
       </nav>
-          <h1> College Choice Tool: Location </h1>
+          <h1> College Choice Tool: Test Scores</h1>
       <div class = "text">
         <p> After 5 minutes, the survey will automatically move to the next question. </p>
-          <div class ="myProgress">
-        <div class ="myBar"></div>
+          <div id ="progress2">
+        <div id ="bar2"></div>
           </div>
 
           <br>
-          <p> There are many college and university options in every state. If you would like to stay in your home state, please select your state. If you would like to switch up locations, please select a state of your choosing. </p>
-        <label for="state"> Choose a location:</label>
-        <select class="state">
-            <option value="AL">Alabama</option>
-            <option value="AK">Alaska</option>
-            <option value="AZ">Arizona</option>
-            <option value="AR">Arkansas</option>
-            <option value="CA">California</option>
-            <option value="CO">Colorado</option>
-            <option value="CT">Connecticut</option>
-            <option value="DE">Delaware</option>
-            <option value="DC">District Of Columbia</option>
-            <option value="FL">Florida</option>
-            <option value="GA">Georgia</option>
-            <option value="HI">Hawaii</option>
-            <option value="ID">Idaho</option>
-            <option value="IL">Illinois</option>
-            <option value="IN">Indiana</option>
-            <option value="IA">Iowa</option>
-            <option value="KS">Kansas</option>
-            <option value="KY">Kentucky</option>
-            <option value="LA">Louisiana</option>
-            <option value="ME">Maine</option>
-            <option value="MD">Maryland</option>
-            <option value="MA">Massachusetts</option>
-            <option value="MI">Michigan</option>
-            <option value="MN">Minnesota</option>
-            <option value="MS">Mississippi</option>
-            <option value="MO">Missouri</option>
-            <option value="MT">Montana</option>
-            <option value="NE">Nebraska</option>
-            <option value="NV">Nevada</option>
-            <option value="NH">New Hampshire</option>
-            <option value="NJ">New Jersey</option>
-            <option value="NM">New Mexico</option>
-            <option value="NY">New York</option>
-            <option value="NC">North Carolina</option>
-            <option value="ND">North Dakota</option>
-            <option value="OH">Ohio</option>
-            <option value="OK">Oklahoma</option>
-            <option value="OR">Oregon</option>
-            <option value="PA">Pennsylvania</option>
-            <option value="RI">Rhode Island</option>
-            <option value="SC">South Carolina</option>
-            <option value="SD">South Dakota</option>
-            <option value="TN">Tennessee</option>
-            <option value="TX">Texas</option>
-            <option value="UT">Utah</option>
-            <option value="VT">Vermont</option>
-            <option value="VA">Virginia</option>
-            <option value="WA">Washington</option>
-            <option value="WV">West Virginia</option>
-            <option value="WI">Wisconsin</option>
-            <option value="WY">Wyoming</option>
-        </select>
+          <p> There are many college and university options that require a baseline SAT or ACT score.  </p>
+        <label for="state"> Please input your SAT and/or ACT scores: </label>
+          <p> SAT SCORE: <input type="text"> </p>
+          <p> ACT SCORE: <input type="text"> </p>
+      
           <div>
         <button type = "button" id = "back2"> Back </button>
           <button type = "button" id = "next2"> Next </button>
               </div>
       </div>
+           <footer>
+            <a href="https://www.usnews.com/best-colleges/rankings/national-universities">
+            <img id = "usnews" src = https://www.wane.com/wp-content/uploads/sites/21/2020/09/best-colleges.jpg alt = "US NEWS COLLEGE RANKING pic"></a>
+            <a href="https://collegereadiness.collegeboard.org/sat">
+            <img id = "sat" src = https://www.insidehighered.com/sites/default/server_files/media/SAT_2.jpg alt = "SAT pic"> </a>
+                <p>Authors: Arianna Cannon and Rebecca Lipton<br>
+                <a href="ao2646a@american.edu">ao2646a@american.edu</a> <br> <a href="rl5207a@student.american.edu">rl5207a@student.american.edu </a></p>
+              <p> 
+            4400 Massachusetts Ave NW, Washington, DC 20016 </p>
+             <p> Created by two Computer Science students at American University </p> <br>
+ 
+  </footer>
       </section>
 
             <section id="form3" class= "hidden">
@@ -184,10 +165,9 @@
           <h1> College Choice Tool: Size </h1>
       <div class = "text">
         <p> After 5 minutes, the survey will automatically move to the next question. </p>
-             <div class ="myProgress">
-        <div class ="myBar"></div>
+            <div id ="progress3">
+        <div id ="bar3"></div>
           </div>
-
           <br>
           <p> Every college and university ranges in amount of students. Some schools have less than 3,000 students, whereas others have more than 60,000. While some prefer a large student body, others prefer a smaller one. Both styles offer opportunities for community building, therefore the decision is completely up to your preference. If you would prefer a compromise between these options, feel free to click medium. </p>
         <label for="size"> Choose a size:</label>
@@ -201,8 +181,19 @@
           <button type = "button" id = "next3"> Next </button>
               </div>
       </div>
+                       <footer>
+            <a href="https://www.usnews.com/best-colleges/rankings/national-universities">
+            <img id = "usnews" src = https://www.wane.com/wp-content/uploads/sites/21/2020/09/best-colleges.jpg alt = "US NEWS COLLEGE RANKING pic"></a>
+            <a href="https://collegereadiness.collegeboard.org/sat">
+            <img id = "sat" src = https://www.insidehighered.com/sites/default/server_files/media/SAT_2.jpg alt = "SAT pic"> </a>
+                <p>Authors: Arianna Cannon and Rebecca Lipton<br>
+                <a href="ao2646a@american.edu">ao2646a@american.edu</a> <br> <a href="rl5207a@student.american.edu">rl5207a@student.american.edu </a></p>
+              <p> 
+            4400 Massachusetts Ave NW, Washington, DC 20016 </p>
+             <p> Created by two Computer Science students at American University </p> <br>
+  </footer>
       </section>
-      
+
         <section id = "form4" class = "hidden">
             <nav>
                 <ul>
@@ -212,17 +203,21 @@
                     <li><a href="aboutusColleges.html">About Us</a></li>
                 </ul>
             </nav>
-        <section>
-        <div id = "header">
-            
-            </div>
-      <!--class three-->      
-      <div class = "resultList">
-          <p> Based on your preferences, we have selected a unique list of colleges that we believe meets your criteria: </p>    
+          <h1> College Choice Tool: Results </h1>
+      <div class = "text">  
+          <p> Based on your preferences, we have selected a unique list of colleges that we believe meets your criteria. There are a lot of results so only ten colleges will show on the page at one time: </p>    
             <ol>
                 <li>University 1: </li>
-                  <li>University 2: </li>
-                  <li>University 3: </li>
+                <li>University 2: </li>
+                <li>University 3: </li>
+                <li> University 4: </li>
+                <li> University 5: </li>
+                <li> Univeristy 6: </li>
+                <li> University 7: </li>
+                <li> University 8: </li>
+                <li> Univeristy 9: </li>
+                <li> University 10: </li>
+                
               </ol>
               <p> Click on the individual school to get more info!</p>
 
@@ -232,8 +227,20 @@
               
               </div>
            </div>      
-      </section>
-    </section>
 
+            <br>
+                   <footer>
+            <a href="https://www.usnews.com/best-colleges/rankings/national-universities">
+            <img id = "usnews" src = https://www.wane.com/wp-content/uploads/sites/21/2020/09/best-colleges.jpg alt = "US NEWS COLLEGE RANKING pic"></a>
+            <a href="https://collegereadiness.collegeboard.org/sat">
+            <img id = "sat" src = https://www.insidehighered.com/sites/default/server_files/media/SAT_2.jpg alt = "SAT pic"> </a>
+                <p>Authors: Arianna Cannon and Rebecca Lipton<br>
+                <a href="ao2646a@american.edu">ao2646a@american.edu</a> <br> <a href="rl5207a@student.american.edu">rl5207a@student.american.edu </a></p>
+              <p> 
+            4400 Massachusetts Ave NW, Washington, DC 20016 </p>
+             <p> Created by two Computer Science students at American University </p> <br>
+ 
+  </footer>
+    </section>
   </body>
 </html>

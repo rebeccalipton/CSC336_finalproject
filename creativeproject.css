@@ -46,11 +46,7 @@ li a:hover {
 
 
 img{
-    width: 180;
-}
-
-#sat{
-    margin-left: 825px;
+    width: 200;
 }
 
 button{
@@ -62,10 +58,26 @@ button{
 }
 
 footer{
+    background-color: white;
     margin-top: 100px;
     width: 1200;
-    background-color: white;
     display: inline-block;
+    color: black;
+    text-align: center;
+    font-family: 'Slabo 27px', serif;
+    font-size: 18px;
+}
+
+#usnews{
+    padding-top: 20px;
+   display: inline-flex;
+    float: left;
+}
+
+#sat{
+      display: inline-flex;
+    float: right;
+    margin-right: 20px;
 }
 
 .hidden{
@@ -106,7 +118,7 @@ footer{
 }
 
 
-#form2>h1, #form3>h1, #form4>h1{
+#form2>h1, #form3>h1, #form4>h1 {
     margin-top: 73px;
     margin-left: 360px;
     font-size: 32px;
@@ -114,6 +126,7 @@ footer{
     padding: 5px;
     width: 420px;
 }
+
 
 .text{
     margin-top: 70px;
@@ -139,7 +152,7 @@ footer{
 }
 
 #form2{
-    background-image: url("map.jpg");
+    background-image: url("SAT.jpg");
     height:100%;
     width:100%;
     font-family: 'Karla', sans-serif;
@@ -189,18 +202,14 @@ footer{
     font-size: 20px;
 }
 
-#myProgress {
+#myProgress, #progress2, #progress3 {
   width: 100%;
   background-color: white;
     border: 1px solid black;
 }
 
-#myBar {
+#myBar, #bar2, #bar3 {
   width: 1%;
   height: 30px;
   background-color: skyblue;
-}
-
-#about{
-  margin-top: 100px;
 }
