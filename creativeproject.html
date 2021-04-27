@@ -8,7 +8,7 @@
           @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400&display=swap');
           @import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
 </style>
-  </head> 
+  </head>
 
   <body>
       <section id = "main-view">
@@ -39,13 +39,13 @@
             <img id = "sat" src = https://www.insidehighered.com/sites/default/server_files/media/SAT_2.jpg alt = "SAT pic"> </a>
                 <p>Authors: Arianna Cannon and Rebecca Lipton<br>
                 <a href="ao2646a@american.edu">ao2646a@american.edu</a> <br> <a href="rl5207a@student.american.edu">rl5207a@student.american.edu </a></p>
-              <p> 
+              <p>
             4400 Massachusetts Ave NW, Washington, DC 20016 </p>
              <p> Created by two Computer Science students at American University </p> <br>
- 
+
   </footer>
   </section>
-      
+
 <!--class one-->
   <section id="form1" class= "hidden">
             <nav>
@@ -57,7 +57,7 @@
           </ul>
       </nav>
           <h1> College Choice Tool: Price </h1>
-      
+
     <!--class text-->
       <div class = "text">
         <p> After 5 minutes, the survey will automatically move to the next question. </p>
@@ -67,7 +67,7 @@
           <br>
           <p> Colleges and universities range in price depending on if they are public, private, in-state, and out of state. By selecting your price range we can better select matches that will fit your needs. If in need of federal aid, feel free to check out the federal aid link here: <a href = https://studentaid.gov/h/apply-for-aid/fafsa> FAFSA </a>. There will be time to investigate federal aid options for each match at the end of the survey as well.</p>
         <label for="price"> Choose an annual tuition price:</label>
-        <select class="price">
+        <select class="price" id = "price">
       <option value="0-5000"> $0.00 to $5,000</option>
       <option value="5000-10000"> $5,001 to $10,000</option>
       <option value="10000-20000"> $10,001 to $20,000</option>
@@ -105,13 +105,13 @@
             <img id = "sat" src = https://www.insidehighered.com/sites/default/server_files/media/SAT_2.jpg alt = "SAT pic"> </a>
                 <p>Authors: Arianna Cannon and Rebecca Lipton<br>
                 <a href="ao2646a@american.edu">ao2646a@american.edu</a> <br> <a href="rl5207a@student.american.edu">rl5207a@student.american.edu </a></p>
-              <p> 
+              <p>
             4400 Massachusetts Ave NW, Washington, DC 20016 </p>
              <p> Created by two Computer Science students at American University </p> <br>
- 
+
   </footer>
 </section>
-      
+
       <section id="form2" class= "hidden">
             <nav>
           <ul>
@@ -131,9 +131,9 @@
           <br>
           <p> There are many college and university options that require a baseline SAT or ACT score.  </p>
         <label for="state"> Please input your SAT and/or ACT scores: </label>
-          <p> SAT SCORE: <input type="text"> </p>
-          <p> ACT SCORE: <input type="text"> </p>
-      
+          <p> SAT SCORE: <input id = "sat"type="text"> </p>
+          <p> ACT SCORE: <input id = "act" type="text"> </p>
+
           <div>
         <button type = "button" id = "back2"> Back </button>
           <button type = "button" id = "next2"> Next </button>
@@ -146,10 +146,10 @@
             <img id = "sat" src = https://www.insidehighered.com/sites/default/server_files/media/SAT_2.jpg alt = "SAT pic"> </a>
                 <p>Authors: Arianna Cannon and Rebecca Lipton<br>
                 <a href="ao2646a@american.edu">ao2646a@american.edu</a> <br> <a href="rl5207a@student.american.edu">rl5207a@student.american.edu </a></p>
-              <p> 
+              <p>
             4400 Massachusetts Ave NW, Washington, DC 20016 </p>
              <p> Created by two Computer Science students at American University </p> <br>
- 
+
   </footer>
       </section>
 
@@ -171,7 +171,7 @@
           <br>
           <p> Every college and university ranges in amount of students. Some schools have less than 3,000 students, whereas others have more than 60,000. While some prefer a large student body, others prefer a smaller one. Both styles offer opportunities for community building, therefore the decision is completely up to your preference. If you would prefer a compromise between these options, feel free to click medium. </p>
         <label for="size"> Choose a size:</label>
-        <select class="size">
+        <select class="size" id = "schoolSize">
             <option value="small">Small: 1,000 - 5,000 Students</option>
             <option value="medium">Medium: 5,000 - 15,000 Students</option>
             <option value="large">Large: 15,000 - 70,000 Students</option>
@@ -188,7 +188,7 @@
             <img id = "sat" src = https://www.insidehighered.com/sites/default/server_files/media/SAT_2.jpg alt = "SAT pic"> </a>
                 <p>Authors: Arianna Cannon and Rebecca Lipton<br>
                 <a href="ao2646a@american.edu">ao2646a@american.edu</a> <br> <a href="rl5207a@student.american.edu">rl5207a@student.american.edu </a></p>
-              <p> 
+              <p>
             4400 Massachusetts Ave NW, Washington, DC 20016 </p>
              <p> Created by two Computer Science students at American University </p> <br>
   </footer>
@@ -204,8 +204,8 @@
                 </ul>
             </nav>
           <h1> College Choice Tool: Results </h1>
-      <div class = "text">  
-          <p> Based on your preferences, we have selected a unique list of colleges that we believe meets your criteria. There are a lot of results so only ten colleges will show on the page at one time: </p>    
+      <div class = "text">
+          <p> Based on your preferences, we have selected a unique list of colleges that we believe meets your criteria. There are a lot of results so only ten colleges will show on the page at one time: </p>
             <ol>
                 <li>University 1: </li>
                 <li>University 2: </li>
@@ -217,16 +217,16 @@
                 <li> University 8: </li>
                 <li> Univeristy 9: </li>
                 <li> University 10: </li>
-                
+
               </ol>
               <p> Click on the individual school to get more info!</p>
 
               <button type = "button" id = "back4"> Back </button>
-              
+
         <div id = "help">
-              
+
               </div>
-           </div>      
+           </div>
 
             <br>
                    <footer>
@@ -236,10 +236,10 @@
             <img id = "sat" src = https://www.insidehighered.com/sites/default/server_files/media/SAT_2.jpg alt = "SAT pic"> </a>
                 <p>Authors: Arianna Cannon and Rebecca Lipton<br>
                 <a href="ao2646a@american.edu">ao2646a@american.edu</a> <br> <a href="rl5207a@student.american.edu">rl5207a@student.american.edu </a></p>
-              <p> 
+              <p>
             4400 Massachusetts Ave NW, Washington, DC 20016 </p>
              <p> Created by two Computer Science students at American University </p> <br>
- 
+
   </footer>
     </section>
   </body>
