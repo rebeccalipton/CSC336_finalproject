@@ -172,8 +172,7 @@
             console.log(data);
             //makes JSON into an array just need to print the results array - in console//
             data = JSON.parse(data); 
-        //  data = JSON. stringify(data); -> makes the whole JSON object appear//
-            
+        //  data = JSON. stringify(data); -> makes the whole JSON object appear// 
             showResults(data);
         })
         .catch(function(error) {
@@ -676,7 +675,7 @@
           // once this code is correct copy and paste for each price interval
             if(below.value == selected){
           // Princeton Review says score below 15 is below average at almost any college https://www.princetonreview.com/college-advice/good-act-scores#:~:text=The%20ACT%20is%20scored%20on,scored%20out%20of%2036%20points.
-            satAct();
+                satAct();
             }
         
             if(above.value == selected){
@@ -786,6 +785,7 @@
           }
 
 function showResults(response) {
+    console.log(response);
 //    for(let i=0; i<response.length; i++){
 //            let responses = response[i];
 //            let list = document.createElement("li");
