@@ -142,6 +142,7 @@
         document.querySelector("#form4").classList.remove("hidden");
         document.querySelector("#form3").classList.add("hidden");
         //show results from API//
+
         fetchAdmission();
         quiz();
     }
@@ -199,7 +200,8 @@
                 }
         }
     
-          
+    
+    //API variable name = admissions//
     function satAct(){
         let sat = parseInt(document.getElementById("sat"));
         let act = parseInt(document.getElementById("act"));
@@ -666,6 +668,7 @@
                     }
                 }
       
+    //API variable name - cost//
     function quiz(){
         let price = document.getElementById("price");
         let below = document.getElementById("below");
