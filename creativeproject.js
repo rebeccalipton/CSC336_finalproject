@@ -1,13 +1,15 @@
 (function () {
+    //use strict//
     "use strict";
+    //timeout global variable for time bars//
         var timeout = null;
     // rebecca api key
     // this url works in browser
-        const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.degrees_awarded.predominant=2,3&fields=id,school.name,2013.student.size&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
+        const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.degrees_awarded.predominant=2,3&fields=school.name,2013.student.size&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
 
 
     window.onload = function () {
-
+//what happens when user clicks back and next//
         document.getElementById("start").onclick = form1;
 
         document.getElementById("back1").onclick = back1;
@@ -37,10 +39,9 @@
 
     }
 
-    //Time bar for Form1 where divs are an ID//
+    //Time bar for forms//
             var i = 0;
             function move() {
-                console.log("hi")
                 i = 1;
                 var progress = document.getElementById("myBar");
                 var progress2 = document.getElementById("bar2");
@@ -63,7 +64,8 @@
                   }
               }
             }
-
+    
+//clear time bar when clicking next or back so that time does not keep adding when in new form//
     function clearProgress(){
         clearInterval(timeout);
         var width = 1;
@@ -76,65 +78,81 @@
     }
 
     function form1 (){
+        //change view//
         document.querySelector("#main-view").classList.add("hidden");
         document.querySelector("#form1").classList.remove("hidden");
         document.querySelector("body").style.backgroundImage = "none";
+        //timer//
         move();
 }
 
 
     function back1 (){
+        //change view//
          document.querySelector("#main-view").classList.remove("hidden");
         document.querySelector("#form1").classList.add("hidden");
          document.querySelector("body").style.backgroundImage = "url(college-students.jpeg)";
+        //clear and call timer//
         clearProgress();
         move();
 
     }
 
     function next1 (){
+       //change view//
         document.querySelector("#form1").classList.add("hidden");
         document.querySelector("#form2").classList.remove("hidden");
         document.querySelector("body").style.backgroundImage = "none";
+        //clear and call timer//
         clearProgress();
         move();
     }
 
     function back2 (){
-         document.querySelector("#form1").classList.remove("hidden");
+         //change view//
+        document.querySelector("#form1").classList.remove("hidden");
         document.querySelector("#form2").classList.add("hidden");
+        //clear and call timer//
         clearProgress();
         move();
     }
 
        function next2 (){
+           //change view//
         document.querySelector("#form2").classList.add("hidden");
         document.querySelector("#form3").classList.remove("hidden");
         document.querySelector("body").style.backgroundImage = "none";
+           //clear and call timer//
            clearProgress();
            move();
 
     }
 
     function back3 (){
+        //change view//
         document.querySelector("#form2").classList.remove("hidden");
         document.querySelector("#form3").classList.add("hidden");
+        //clear and call timer//
         clearProgress();
         move();
     }
 
     function next3 (){
-    document.querySelector("#form4").classList.remove("hidden");
+        //change view//
+        document.querySelector("#form4").classList.remove("hidden");
         document.querySelector("#form3").classList.add("hidden");
+        //show results from API//
         fetchAdmission();
         quiz();
-        showResults();
     }
 
     function back4 (){
+        //change view//
         document.querySelector("#form3").classList.remove("hidden");
         document.querySelector("#form4").classList.add("hidden");
-
+        //clear and call timer//
+        clearProgress();
+        move();
     }
 
     function showLA(){
@@ -151,7 +169,12 @@
         fetch(url)
         .then(checkStatus)
         .then(function(data){
-          console.log(data)
+            console.log(data);
+            //makes JSON into an array just need to print the results array - in console//
+            data = JSON.parse(data); 
+        //  data = JSON. stringify(data); -> makes the whole JSON object appear//
+            
+            showResults(data);
         })
         .catch(function(error) {
           console.error("Problem with fetch request");
@@ -763,9 +786,19 @@
           }
 
 function showResults(response) {
-    let results = document.getElementById("resultsforjs").innerHTML; 
-    results = response.text;
-    results.setAttribute("li");
-  }
-    
+//    for(let i=0; i<response.length; i++){
+//            let responses = response[i];
+//            let list = document.createElement("li");
+//            list.setAttribute("p", responses);    
+//            document.getElementById("resultsforjs").appendChild(list);
+//        }
+//        for (var i = 0; i < results.metadata.length; i++) {
+//            console.log(results.metadata[i].school.name);
+//        }
+
+    document.getElementById("resultsforjs").innerHTML = response;
+    //need to print the results array//
+//
+//  }
+}
 })();
