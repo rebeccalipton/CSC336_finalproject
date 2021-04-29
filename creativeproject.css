@@ -177,6 +177,11 @@ footer{
     width: 100%;
 }
 
+#about{
+  margin-top: 100px;
+}
+
+
 
 #libArt {
     background-image: url(libART.jpg);
@@ -213,7 +218,10 @@ footer{
   background-color: skyblue;
 }
 
-ol, li{
-    color: red;
-    font-size: 19px;
+li{
+    color: blue;
+    font-size: 16px;
+}
+ol{
+  font-size: 14px;
 }
