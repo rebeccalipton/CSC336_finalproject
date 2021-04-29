@@ -98,7 +98,7 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
     function back1 (){
         //change view//
          document.querySelector("#main-view").classList.remove("hidden");
-        document.querySelector("#form1").classList.add("hidden");
+         document.querySelector("#form1").classList.add("hidden");
          document.querySelector("body").style.backgroundImage = "url(college-students.jpeg)";
         //clear and call timer//
         clearProgress();
@@ -184,12 +184,6 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
       document.getElementById("opinions").append(princetonLink);
 
     }
-    function aboveTuition(){
-      let above = document.getElementById("above").checked;
-      if(above == "True"){
-        console.log('above = true');
-      }
-    }
 
 
 
@@ -197,6 +191,7 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
         fetch(url)
         .then(checkStatus)
         .then(function(data){
+
             console.log(data);
             //makes JSON into an array just need to print the results array - in console//
             data = JSON.parse(data);
@@ -250,7 +245,7 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
     //API variable name - cost//
     function quiz(){
         let price = document.getElementById("price");
-
+        tuitionGlobal = price;
         if(price.value == "0-5000"){
           price = 5000;
         }
@@ -305,16 +300,17 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
 function showResults(response) {
   let results = response.results;
   results = results.filter(function(school){
-    if(school.size < 5000){
-      return school.size = "small";
-    }
-    else if(school.size > 5000 && school.size < 15001){
-      return school.size = "medium";
-    }
-    else{
-      return school.size = "large";
-    }
-    return school.act >= actScore && school.sat >= satScore; //&& school.size = size; //
+    // if(school.size < 5000){
+    //   return school.size < 5000 && school.act >= actGlobal && school.sat >= satGlobal && school.tuition >= tuitionGlobal;
+    // }
+    // else if(school.size > 5000 && school.size < 15001){
+    //
+    //   return school.size > 5000 && school.size < 15001 && school.act >= actGlobal && school.sat >= satGlobal && school.tuition >= tuitionGlobal;
+    // }
+    // else{
+    //   return school.size >= 15001 && school.act >= actGlobal && school.sat >= satGlobal && school.tuition >= tuitionGlobal;
+    // }
+   return school.act >= actGlobal && school.sat >= satGlobal; //&& school.size = size; //
 
 // dont need if else statements just make sure global variables are present and compare them to array
     // only extracts schools that match filter
@@ -335,8 +331,7 @@ function showResults(response) {
         document.getElementById("resultsforjs").appendChild(ulACT);
         var responseName = results[i]["school.name"];
         var size = results[i]["2018.student.size"];
-      //  var link = results[i]["school.url"];
-    //    var userResponse = responseName + ", Size: " + size + " students";
+
         console.log(responseName);
         let htmlInput = document.getElementById("resultsforjs");
         li.innerHTML = responseName;
@@ -351,8 +346,6 @@ function showResults(response) {
         htmlInput.appendChild(ulACT);
 
 
-
-
     }
 }
 
@@ -362,10 +355,8 @@ function showResults2(response){
         document.getElementById("resultsforjs2").appendChild(li);
         var responseName = results[i]["school.name"];
         var size = results[i]["2013.student.size"];
-
-
         var userResponse = responseName + ", Size: " + size + " students" ;
-        console.log(userResponse);
+
 }
 // show results by 10
 // button to display next page
