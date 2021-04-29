@@ -166,10 +166,9 @@ footer{
 }
 
 #form4, #form5 {
-   background-image: url("results.jpg");
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
+    background: 100%;
+    background-image: url("results.jpg");
+    background-repeat: repeat;
 }
 
 #aboutus {
