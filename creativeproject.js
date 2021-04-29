@@ -20,7 +20,7 @@
 
 // custom url
 // 2013.school.url
-const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,latest.admissions.act_scores.midpoint.cumulative,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
+const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,school.school_url,latest.admissions.act_scores.midpoint.cumulative,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
 //const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.degrees_awarded.predominant=2,3&fields=school.name,2018.student.size&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
 //const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,2018.tuition.out_of_state.overall&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
 
@@ -203,7 +203,6 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
             data = JSON.parse(data);
         //  data = JSON. stringify(data); -> makes the whole JSON object appear//
             showResults(data);
-            showResults2(data);
         })
         .catch(function(error) {
           console.error(url);
@@ -258,8 +257,6 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
 
           else if (price.value == "5000-10000"){
             price = 10000;
-
-
           }
 
           else if (price.value == "10000-20000"){
@@ -315,10 +312,8 @@ function showResults(response) {
     else{
       return school.size = "large";
     }
-    return school.act >= actScore && school.sat >= satScore; //&& school.size = size; //
+  //  return school.act >= act && school.sat >= sat; //&& school.size = size; //
 
-// dont need if else statements just make sure global variables are present and compare them to array
-    // only extracts schools that match filter
 
   })
 
@@ -328,6 +323,9 @@ function showResults(response) {
         let ulTuition = document.createElement("ul");
         let ulSAT = document.createElement("ul");
         let ulACT = document.createElement("ul");
+        let ulLink = document.createElement("ul");
+        let alink = document.createElement("a");
+
 
 
         document.getElementById("resultsforjs").appendChild(li);
@@ -335,13 +333,34 @@ function showResults(response) {
         document.getElementById("resultsforjs").appendChild(ulTuition);
         document.getElementById("resultsforjs").appendChild(ulSAT);
         document.getElementById("resultsforjs").appendChild(ulACT);
+      //  document.getElementById("resultsforjs").appendChild(alink);
         var responseName = results[i]["school.name"];
         var size = results[i]["2018.student.size"];
+        // size.filter(function(school){
+        //   if(school.size < 5000){
+        //     return school.size = "small";
+        //   }
+        //   else if(school.size > 5000 && school.size < 15001){
+        //     return school.size = "medium";
+        //   }
+        //   else{
+        //     return school.size = "large";
+        //   }
+        // })
         var tuition = results[i]["latest.cost.tuition.out_of_state"];
+        // tuition.filter(function(school){
+        //   return school.tuition <= tuitionGlobal;
+        // })
         var sat = results[i]["latest.admissions.sat_scores.average.overall"];
+        // sat.filter(function(school){
+        //   return school.sat <= satGlobal;
+        // })
         var act = results[i]["latest.admissions.act_scores.midpoint.cumulative"];
-      //  var link = results[i]["school.url"];
-    //    var userResponse = responseName + ", Size: " + size + " students";
+        // act.filter(function(school){
+        //   return school.act <= actGlobal;
+        // })
+      //  var link = results[i]["school.school_url"];
+
         console.log(responseName);
         let htmlInput = document.getElementById("resultsforjs");
         li.innerHTML = responseName;
@@ -349,11 +368,14 @@ function showResults(response) {
         ulTuition.innerHTML = "Tuition: $" + tuition;
         ulSAT.innerHTML = "Average SAT Score: " + sat;
         ulACT.innerHTML = "Median ACT Score: " + act;
+      //  alink.setAttribute("href") = link;
         htmlInput.appendChild(li);
         htmlInput.appendChild(ulSize);
         htmlInput.appendChild(ulTuition);
         htmlInput.appendChild(ulSAT);
         htmlInput.appendChild(ulACT);
+        //htmlInput.appendChild(ulLink);
+
 
     }
 }
