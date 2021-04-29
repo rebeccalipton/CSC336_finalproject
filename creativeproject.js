@@ -20,7 +20,9 @@
 
 // custom url
 // 2013.school.url
-const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,2019.tuition.out_of_state.overall&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
+const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,school.school_url,latest.admissions.act_scores.midpoint.cumulative,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
+//const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.degrees_awarded.predominant=2,3&fields=school.name,2018.student.size&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
+//const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,2018.tuition.out_of_state.overall&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
 
     window.onload = function () {
 //what happens when user clicks back and next//
@@ -41,6 +43,8 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
         document.getElementById("back4").onclick = back4;
 
         document.getElementById("moreSchools").onclick = next4;
+
+        document.getElementById("back5").onclick = back5;
 
 
     }
@@ -96,7 +100,7 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
     function back1 (){
         //change view//
          document.querySelector("#main-view").classList.remove("hidden");
-        document.querySelector("#form1").classList.add("hidden");
+         document.querySelector("#form1").classList.add("hidden");
          document.querySelector("body").style.backgroundImage = "url(college-students.jpeg)";
         //clear and call timer//
         clearProgress();
@@ -163,9 +167,9 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
     }
 
     function next4(){
-        fetchAdmission();
+        fetchAdmissionRandom();
         randomizeResults();
-        
+
     }
 
 
@@ -187,16 +191,35 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
 
 
 
+
+
     function fetchAdmission(){
         fetch(url)
         .then(checkStatus)
         .then(function(data){
+
             console.log(data);
             //makes JSON into an array just need to print the results array - in console//
             data = JSON.parse(data);
         //  data = JSON. stringify(data); -> makes the whole JSON object appear//
             showResults(data);
-            showResults2(data);
+        })
+        .catch(function(error) {
+          console.error(url);
+          console.error("Problem with fetch request");
+        });
+    }
+    
+    function fetchAdmissionRandom(){
+        fetch(url)
+        .then(checkStatus)
+        .then(function(data){
+
+            console.log(data);
+            //makes JSON into an array just need to print the results array - in console//
+            data = JSON.parse(data);
+        //  data = JSON. stringify(data); -> makes the whole JSON object appear//
+            randomizeResults(data);
         })
         .catch(function(error) {
           console.error(url);
@@ -244,15 +267,13 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
     //API variable name - cost//
     function quiz(){
         let price = document.getElementById("price");
-
+        tuitionGlobal = price;
         if(price.value == "0-5000"){
           price = 5000;
         }
 
           else if (price.value == "5000-10000"){
             price = 10000;
-
-
           }
 
           else if (price.value == "10000-20000"){
@@ -298,29 +319,17 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
 
 function showResults(response) {
   let results = response.results;
-  results = results.filter(function(school){
-    if(school.size < 5000){
-      return school.size = "small";
-    }
-    else if(school.size > 5000 && school.size < 15001){
-      return school.size = "medium";
-    }
-    else{
-      return school.size = "large";
-    }
-    return school.act >= actScore && school.sat >= satScore; //&& school.size = size; //
-
-// dont need if else statements just make sure global variables are present and compare them to array
-    // only extracts schools that match filter
-
-  })
-    
+    let schools = [];
+//
     for (let i = 0; i<10; i++){ // looks thru first 10 of new array (which holds objs that match filter)
         let li = document.createElement("li");
         let ulSize = document.createElement("ul");
         let ulTuition = document.createElement("ul");
         let ulSAT = document.createElement("ul");
         let ulACT = document.createElement("ul");
+        let ulLink = document.createElement("ul");
+        let alink = document.createElement("a");
+
 
 
         document.getElementById("resultsforjs").appendChild(li);
@@ -328,44 +337,74 @@ function showResults(response) {
         document.getElementById("resultsforjs").appendChild(ulTuition);
         document.getElementById("resultsforjs").appendChild(ulSAT);
         document.getElementById("resultsforjs").appendChild(ulACT);
+        
+
+      //  document.getElementById("resultsforjs").appendChild(alink);
         var responseName = results[i]["school.name"];
         var size = results[i]["2018.student.size"];
-      //  var link = results[i]["school.url"];
-    //    var userResponse = responseName + ", Size: " + size + " students";
+        // size.filter(function(school){
+        //   if(school.size < 5000){
+        //     return school.size = "small";
+        //   }
+        //   else if(school.size > 5000 && school.size < 15001){
+        //     return school.size = "medium";
+        //   }
+        //   else{
+        //     return school.size = "large";
+        //   }
+        // })
+        var tuition = results[i]["latest.cost.tuition.out_of_state"];
+        // tuition.filter(function(school){
+        //   return school.tuition <= tuitionGlobal;
+        // })
+        var sat = results[i]["latest.admissions.sat_scores.average.overall"];
+
+        var act = results[i]["latest.admissions.act_scores.midpoint.cumulative"];
+        // act.filter(function(school){
+        //   return school.act <= actGlobal;
+        // })
+      //  var link = results[i]["school.school_url"];
+
         console.log(responseName);
         let htmlInput = document.getElementById("resultsforjs");
         li.innerHTML = responseName;
-        ulSize.innerHTML = "Size: " + size;
-        ulTuition.innerHTML = "Tuition: ";
-        ulSAT.innerHTML = "Average SAT Score: ";
-        ulACT.innerHTML = "Median ACT Score: ";
+        ulSize.innerHTML = "Size: " + size + " students";
+        ulTuition.innerHTML = "Tuition: $" + tuition;
+        ulSAT.innerHTML = "Average SAT Score: " + sat;
+        ulACT.innerHTML = "Median ACT Score: " + act;
+      //  alink.setAttribute("href") = link;
         htmlInput.appendChild(li);
         htmlInput.appendChild(ulSize);
         htmlInput.appendChild(ulTuition);
         htmlInput.appendChild(ulSAT);
         htmlInput.appendChild(ulACT);
+        //htmlInput.appendChild(ulLink);
+
 
     }
 }
 
 function randomizeResults(response){
-    let randomNum = Math.floor(Math.random)
-    console.log(randomNum);
+    let results = response.results;
     clearResults();
-     for (let i = 0; i<10; i++){
-        i = randomNum;
-        showResults();
-}
-// show results by 10
-// button to display next page
-// click button --> takes 10 results and replaces with next 10
-// global var that keeps track of offset (click button once results 11-20, indep of results)
-// if less than 10 schools, try catch loop (try code, catch error and display output message ("no other schools match"))
-// js syntax for trycatch is mostly same as java
-}
     
+     for (let i = 0; i<10; i++){
+        let randomNum = Math.floor(Math.random() * 19);
+        let li = document.createElement("li");
+        document.getElementById("resultsforjs").appendChild(li);
+        var responseName = results[randomNum]["school.name"];
+        console.log(responseName);
+        
+         
+        let htmlInput = document.getElementById("resultsforjs");
+        li.innerHTML = responseName;
+        htmlInput.appendChild(li);
+     }
+}
+
+
 function clearResults() {
     document.getElementById("resultsforjs").innerHTML = "";
 }
-    
+
 })();
