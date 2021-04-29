@@ -17,8 +17,10 @@
     // this url works in browser
 //const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.degrees_awarded.predominant=2,3&fields=school.name,2013.student.size&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
 
+
 // custom url
-const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2013.student.size,2019.tuition.out_of_state.overall,school.url&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
+// 2013.school.url
+const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,2019.tuition.out_of_state.overall&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
 
     window.onload = function () {
 //what happens when user clicks back and next//
@@ -220,15 +222,7 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
     function getSize(){
         let size = document.getElementById("schoolSize");
         sizeGlobal = size;
-        // if(size.value == "small"){
-        //   // filter with dropdown value
-        //   // filter does not take place here
-        //   // takes place right before display
-        //              }
-        // else if (size.value == "medium"){
-        //             }
-        // else if(size.value == "large"){
-        //         }
+
         }
 
 
@@ -328,15 +322,35 @@ function showResults(response) {
   })
     for (let i = 0; i<10; i++){ // looks thru first 10 of new array (which holds objs that match filter)
         let li = document.createElement("li");
+        let ulSize = document.createElement("ul");
+        let ulTuition = document.createElement("ul");
+        let ulSAT = document.createElement("ul");
+        let ulACT = document.createElement("ul");
+
+
         document.getElementById("resultsforjs").appendChild(li);
+        document.getElementById("resultsforjs").appendChild(ulSize);
+        document.getElementById("resultsforjs").appendChild(ulTuition);
+        document.getElementById("resultsforjs").appendChild(ulSAT);
+        document.getElementById("resultsforjs").appendChild(ulACT);
         var responseName = results[i]["school.name"];
         var size = results[i]["2018.student.size"];
-        var link = results[i]["school.url"];
-        var userResponse = responseName + ", Size: " + size + " students";
-        console.log(userResponse);
+      //  var link = results[i]["school.url"];
+    //    var userResponse = responseName + ", Size: " + size + " students";
+        console.log(responseName);
         let htmlInput = document.getElementById("resultsforjs");
-        li.innerHTML = userResponse + " " + responseName + "URL:" + link;
+        li.innerHTML = responseName;
+        ulSize.innerHTML = "Size: " + size;
+        ulTuition.innerHTML = "Tuition: ";
+        ulSAT.innerHTML = "Average SAT Score: ";
+        ulACT.innerHTML = "Median ACT Score: ";
         htmlInput.appendChild(li);
+        htmlInput.appendChild(ulSize);
+        htmlInput.appendChild(ulTuition);
+        htmlInput.appendChild(ulSAT);
+        htmlInput.appendChild(ulACT);
+
+
 
 
     }
@@ -348,7 +362,7 @@ function showResults2(response){
         document.getElementById("resultsforjs2").appendChild(li);
         var responseName = results[i]["school.name"];
         var size = results[i]["2013.student.size"];
-        var link = results[i]["school.url"];
+
 
         var userResponse = responseName + ", Size: " + size + " students" ;
         console.log(userResponse);
