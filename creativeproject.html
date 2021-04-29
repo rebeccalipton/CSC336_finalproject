@@ -118,10 +118,38 @@
 
           <br>
           <p> There are many college and university options that require a baseline SAT or ACT score.  </p>
-        <label for="state"> Please input your SAT and/or ACT scores: </label>
-          <p> SAT SCORE: <input id = "sat" type="text"> </p>
-          <p> ACT SCORE: <input id = "act" type="text"> </p>
-
+        <p> Please input your SAT and/or ACT scores:</p>
+        <label for="sat_dropdown"> SAT: </label>
+          <select class="sat" id = "sat_dropdown">
+            <option value="0-600"> 0-600 </option>
+            <option value="601-700"> 601-700</option>
+            <option value="701-800"> 701-800</option>
+            <option value="801-900"> 801-900</option>
+            <option value="901-1000"> 901-1000</option>
+            <option value="1001-1100"> 1001-1100</option>
+            <option value="1101-1200"> 1101-1200</option>
+            <option value="1201-1300"> 1201-1300</option>
+            <option value="1301-1400"> 1301-1400</option>
+            <option value="1401-1500"> 1401-1500</option>
+            <option value="1501-1600"> 1501-1600</option>
+            <option value="No SAT"> I did not take the SAT</option>
+          </select>
+          <br>
+          <br>
+        <label for="act_dropdown"> ACT: </label>
+        <select class="act" id = "act_dropdown">
+          <option value="0-10"> 0-10 </option>
+          <option value="11-13"> 11-13</option>
+          <option value="14-16"> 14-16</option>
+          <option value="17-19"> 17-19</option>
+          <option value="20-22"> 20-22</option>
+          <option value="23-25"> 23-25</option>
+          <option value="26-28"> 26-28</option>
+          <option value="29-31"> 29-31</option>
+          <option value="32-34"> 32-34</option>
+          <option value="35-36"> 35-36</option>
+          <option value="No ACT"> I did not take the ACT</option>
+        </select>
           <div>
         <button type = "button" id = "back2"> Back </button>
           <button type = "button" id = "next2"> Next </button>

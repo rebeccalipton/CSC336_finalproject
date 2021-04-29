@@ -220,18 +220,77 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
         actGlobal = act;
         satGlobal = sat; // setting global var to local var
 
-        if(act.value > 15){
-          return actGlobal;
+        if(act.value == "0-10"){
+          actGlobal = 10;
+        }
+        else if(act.value == "11-13"){
+          actGlobal = 13;
+        }
+        else if(act.value == "14-16"){
+          actGlobal = 16;
+        }
+        else if(act.value == "17-19"){
+          actGlobal = 19;
+        }
+        else if(act.value == "20-22"){
+          actGlobal = 22;
+        }
+        else if(act.value == "23-25"){
+          actGlobal = 25;
+        }
+        else if(act.value == "26-28"){
+          actGlobal = 28;
+        }
+        else if(act.value == "29-31"){
+          actGlobal = 31;
+        }
+        else if(act.value == "32-34"){
+          actGlobal = 34;
+        }
+        else if(act.value == "35-36"){
+          actGlobal = 36;
         }
         else{
-          return ("There are not many schools that will accept this ACT score.");
+          actGlobal = "NA";
         }
-        if(sat.value > 600){
-          return satGlobal;
+
+        if(sat.value == "0-600"){
+          satGlobal = 600;
+        }
+        else if (sat.value == "601-700"){
+          satGlobal = 700;
+        }
+        else if (sat.value == "701-800"){
+          satGlobal = 800;
+        }
+        else if (sat.value == "801-900"){
+          satGlobal = 900;
+        }
+        else if (sat.value == "901-1000"){
+          satGlobal = 1000;
+        }
+        else if (sat.value == "1001-1100"){
+          satGlobal = 1100;
+        }
+        else if (sat.value == "1101-1200"){
+          satGlobal = 1200;
+        }
+        else if (sat.value == "1201-1300"){
+          satGlobal = 1300;
+        }
+        else if (sat.value == "1301-1400"){
+          satGlobal = 1400;
+        }
+        else if (sat.value == "1401-1500"){
+          satGlobal = 1500;
+        }
+        else if (sat.value == "1501-1600"){
+          satGlobal = 1600;
         }
         else{
-          return("There are not many schools that will accept this SAT score.");
+          satGlobal = "NA";
         }
+
       }
 
     //API variable name - cost//
@@ -293,10 +352,11 @@ function showResults(response) {
   console.log(actGlobal);
   console.log(satGlobal);
   console.log(tuitionGlobal);
+  //console.log(results[i].price);
   let results = response.results;
   let schools = [];
   for (let i = 0; i < results.length; i++){
-    if(results[i].act < actGlobal && results[i].sat < satGlobal){
+    if(results[i].price < tuitionGlobal){
       schools.append(results[i]);
     }
   }
@@ -329,7 +389,7 @@ function showResults(response) {
         var act = results[i]["latest.admissions.act_scores.midpoint.cumulative"];
 
 
-        console.log(responseName);
+      //  console.log(responseName);
         let htmlInput = document.getElementById("resultsforjs");
         li.innerHTML = responseName;
         ulSize.innerHTML = "Size: " + size + " students";
