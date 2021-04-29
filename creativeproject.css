@@ -74,8 +74,8 @@ footer{
     float: left;
 }
 
-#sat{
-      display: inline-flex;
+#satIMAGE{
+    display: inline-flex;
     float: right;
     margin-right: 20px;
 }
@@ -118,7 +118,7 @@ footer{
 }
 
 
-#form2>h1, #form3>h1, #form4>h1 {
+#form2>h1, #form3>h1, #form4>h1, #form5>h1 {
     margin-top: 73px;
     margin-left: 360px;
     font-size: 32px;
@@ -147,7 +147,7 @@ footer{
     font-size: 16px;
 }
 
-#next2, #next3{
+#next2, #next3, #moreSchools {
     margin-left: 380px;
 }
 
@@ -165,7 +165,7 @@ footer{
     height: 100%;
 }
 
-#form4{
+#form4, #form5 {
    background-image: url("results.jpg");
     background-repeat: no-repeat;
     width: 100%;
@@ -212,4 +212,9 @@ footer{
   width: 1%;
   height: 30px;
   background-color: skyblue;
+}
+
+ol, li{
+    color: red;
+    font-size: 19px;
 }
