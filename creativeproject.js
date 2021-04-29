@@ -20,7 +20,9 @@
 
 // custom url
 // 2013.school.url
-const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,2019.tuition.out_of_state.overall&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
+const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,latest.admissions.act_scores.midpoint.cumulative,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
+//const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.degrees_awarded.predominant=2,3&fields=school.name,2018.student.size&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
+//const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,2018.tuition.out_of_state.overall&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
 
     window.onload = function () {
 //what happens when user clicks back and next//
@@ -335,15 +337,18 @@ function showResults(response) {
         document.getElementById("resultsforjs").appendChild(ulACT);
         var responseName = results[i]["school.name"];
         var size = results[i]["2018.student.size"];
+        var tuition = results[i]["latest.cost.tuition.out_of_state"];
+        var sat = results[i]["latest.admissions.sat_scores.average.overall"];
+        var act = results[i]["latest.admissions.act_scores.midpoint.cumulative"];
       //  var link = results[i]["school.url"];
     //    var userResponse = responseName + ", Size: " + size + " students";
         console.log(responseName);
         let htmlInput = document.getElementById("resultsforjs");
         li.innerHTML = responseName;
-        ulSize.innerHTML = "Size: " + size;
-        ulTuition.innerHTML = "Tuition: ";
-        ulSAT.innerHTML = "Average SAT Score: ";
-        ulACT.innerHTML = "Median ACT Score: ";
+        ulSize.innerHTML = "Size: " + size + " students";
+        ulTuition.innerHTML = "Tuition: $" + tuition;
+        ulSAT.innerHTML = "Average SAT Score: " + sat;
+        ulACT.innerHTML = "Median ACT Score: " + act;
         htmlInput.appendChild(li);
         htmlInput.appendChild(ulSize);
         htmlInput.appendChild(ulTuition);
