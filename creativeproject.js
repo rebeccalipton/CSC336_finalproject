@@ -15,10 +15,10 @@
 
     // rebecca api key
     // this url works in browser
-const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.degrees_awarded.predominant=2,3&fields=school.name,2013.student.size&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
+//const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.degrees_awarded.predominant=2,3&fields=school.name,2013.student.size&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
 
 // custom url
-//const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,act_scores.midpoint.cumulative,2019.sat_scores.average.overall,2019.tuition.out_of_state.overall&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
+const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2013.student.size,2019.tuition.out_of_state.overall,school.url&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
 
     window.onload = function () {
 //what happens when user clicks back and next//
@@ -203,6 +203,7 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.deg
             showResults2(data);
         })
         .catch(function(error) {
+          console.error(url);
           console.error("Problem with fetch request");
         });
     }
@@ -255,96 +256,51 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.deg
     //API variable name - cost//
     function quiz(){
         let price = document.getElementById("price");
-        let above = document.getElementById("above");
-        console.log("hi")
+
         if(price.value == "0-5000"){
-          price = 5000
-
-            if(above.value == selected){
-                price = 1000000000;
-            }
-
+          price = 5000;
         }
 
           else if (price.value == "5000-10000"){
             price = 10000;
-      
-                if(above.value == selected){
-                  price = 1000000000;
-                }
+
+
           }
 
           else if (price.value == "10000-20000"){
             price = 20000;
-
-                if(above.value == selected){
-                  price = 1000000000;
-                }
           }
 
           else if (price.value == "20000-30000"){
             price = 30000;
-
-                if(above.value == selected){
-                  price = 1000000000;
-                }
           }
 
           else if (price.value == "30000-40000"){
             price = 40000;
-
-                if(above.value == selected){
-                    price = 1000000000;
-                }
           }
 
           else if (price.value == "40000-50000"){
             price = 50000;
-
-                if(above.value == selected){
-                  price = 1000000000;
-                }
           }
 
           else if (price.value == "50000-60000"){
             price = 60000;
-
-                if(above.value == selected){
-                  price = 1000000000;
-                }
           }
 
           else if (price.value == "60000-70000"){
             price = 70000;
-
-                if(above.value == selected){
-                  price = 1000000000;
-                }
           }
 
           else if (price.value == "70000-80000"){
             price = 80000;
-
-                if(above.value == selected){
-                  price = 1000000000;
-                }
           }
 
           else if (price.value == "80000-90000"){
             price = 90000;
-
-
-                if(above.value == selected){
-                  price = 1000000000;
-                }
           }
 
           else if (price.value == "90000-100000"){
             price = 100000;
-
-                if(above.value == selected){
-                  price = 1000000000;
-                }
           }
 
           else if (price.value == "No limit"){
@@ -374,11 +330,12 @@ function showResults(response) {
         let li = document.createElement("li");
         document.getElementById("resultsforjs").appendChild(li);
         var responseName = results[i]["school.name"];
-        var size = results[i]["2013.student.size"];
+        var size = results[i]["2018.student.size"];
+        var link = results[i]["school.url"];
         var userResponse = responseName + ", Size: " + size + " students";
         console.log(userResponse);
         let htmlInput = document.getElementById("resultsforjs");
-        li.innerHTML = userResponse + " " + responseName;
+        li.innerHTML = userResponse + " " + responseName + "URL:" + link;
         htmlInput.appendChild(li);
 
 
@@ -391,7 +348,9 @@ function showResults2(response){
         document.getElementById("resultsforjs2").appendChild(li);
         var responseName = results[i]["school.name"];
         var size = results[i]["2013.student.size"];
-        var userResponse = responseName + ", Size: " + size + " students";
+        var link = results[i]["school.url"];
+
+        var userResponse = responseName + ", Size: " + size + " students" ;
         console.log(userResponse);
 }
 // show results by 10
