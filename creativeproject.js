@@ -1,8 +1,17 @@
+// filtering array
+// anon function that checks thru each condition and only returns if array meets those values
+
+
+
 (function () {
     //use strict//
     "use strict";
     //timeout global variable for time bars//
         var timeout = null;
+        let actGlobal = 0;
+        let satGlobal = 0;
+        let sizeGlobal = "";
+        let tuitionGlobal = 0;
 
     // rebecca api key
     // this url works in browser
@@ -208,11 +217,6 @@
   //   }
   // }
 
-    // rebecca api key
-    // this url works in browser
-    const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.degrees_awarded.predominant=2,3&fields=id,school.name,2013.student.size&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
-
-
 
     function fetchAdmission(){
         fetch(url)
@@ -241,12 +245,16 @@
 
     function getSize(){
         let size = document.getElementById("schoolSize");
-        if(size.value == "small"){
-                     }
-        else if (size.value == "medium"){
-                    }
-        else if(size.value == "large"){
-                }
+        sizeGlobal = size;
+        // if(size.value == "small"){
+        //   // filter with dropdown value
+        //   // filter does not take place here
+        //   // takes place right before display
+        //              }
+        // else if (size.value == "medium"){
+        //             }
+        // else if(size.value == "large"){
+        //         }
         }
 
 
@@ -254,467 +262,484 @@
     function satAct(){
         let sat = parseInt(document.getElementById("sat"));
         let act = parseInt(document.getElementById("act"));
-
-        if(sat.value >= 600){
-            if(act.value >= 15){
-                  getsize();
-            }
-
-            if(act.value >= 17){
-                getSize();
-            }
-
-            if(act.value >= 19){
-                getSize();
-            }
-
-            if(act.value >= 21){
-                getSize();
-            }
-
-            if(act.value >= 23){
-               getSize();
-            }
-
-            if(act.value >=25){
-                getSize();
-              }
-
-            if(act.value >= 27){
-                getSize();
-              }
-
-            if(act.value >= 29){
-                getSize();
-              }
-
-            if(act.value >= 31){
-                getSize();
-              }
-
-            if(act.value >= 33){
-                getSize();
-              }
-
-            if(act.value >= 35){
-               getSize();
-              }
-          }
-
-           // 600 ends
-        if(sat.value >= 700){
-            if(act.value >= 15){
-                getSize();
-                }
-
-            if(act.value >= 17){
-                  getSize();
-                }
-
-            if(act.value >= 19){
-                   getSize();
-                  }
-
-            if(act.value >= 21){
-                    getSize();
-                    }
-
-            if(act.value >= 23){
-                    getSize();
-                      }
-
-            if(act.value >=25){
-                    getSize();
-                        }
-
-            if(act.value >= 27){
-                   getSize();
-                          }
-
-            if(act.value >= 29){
-                   getSize();
-                        }
-
-            if(act.value >= 31){
-                  getSize();
-                        }
-
-            if(act.value >= 33){
-                    getSize();
-                }
-
-            if(act.value >= 35){
-                    getSize();
-                    }
-            }
-
-        if(sat.value >= 800){
-            if(act.value >= 15){
-                      getSize();
-                    }
-
-            if(act.value >= 17){
-                        getSize();
-                      }
-
-            if(act.value >= 19){
-                        getSize();
-                        }
-
-            if(act.value >= 21){
-                getSize();
-                  }
-
-            if(act.value >= 23){
-                getSize();
-                    }
-
-            if(act.value >=25){
-                getSize();
-                      }
-
-            if(act.value >= 27){
-                getSize();
-                        }
-
-            if(act.value >= 29){
-              getSize();
-                          }
-
-            if(act.value >= 31){
-                getSize();
-                            }
-
-            if(act.value >= 33){
-               getSize();
-                            }
-
-            if(act.value >= 35){
-                getSize();
-                    }
-                }
-
-        if(sat.value >= 900){
-          if(act.value >= 15){
-            getSize();
-            }
-
-            if(act.value >= 17){
-              getSize();
-              }
-
-            if(act.value >= 19){
-                getSize();
-                }
-
-            if(act.value >= 21){
-                getSize();
-                  }
-
-            if(act.value >= 23){
-                getSize();
-                    }
-
-            if(act.value >=25){
-                getSize();
-                      }
-
-            if(act.value >= 27){
-                getSize();
-                        }
-
-            if(act.value >= 29){
-                getSize();
-                          }
-
-            if(act.value >= 31){
-                getSize();
-            }
-
-            if(act.value >= 33){
-                getSize();
-            }
-
-            if(act.value >= 35){
-                getSize();
-                    }
-                }
-
-        if(sat.value >= 1000){
-            if(act.value >= 15){
-            getSize();
-            }
-
-            if(act.value >= 17){
-              getSize();
-              }
-
-            if(act.value >= 19){
-                getSize();
-                }
-
-            if(act.value >= 21){
-                getSize();
-                  }
-
-            if(act.value >= 23){
-                getSize();
-                    }
-
-            if(act.value >=25){
-                getSize();
-                      }
-
-            if(act.value >= 27){
-                getSize();
-                        }
-
-            if(act.value >= 29){
-                getSize();
-                          }
-
-            if(act.value >= 31){
-                getSize();
-            }
-
-            if(act.value >= 33){
-                getSize();
-            }
-
-            if(act.value >= 35){
-                getSize();
-                    }
-                }
-
-        if(sat.value >= 1100){
-              if(act.value >= 15){
-            getSize();
-            }
-
-            if(act.value >= 17){
-              getSize();
-              }
-
-            if(act.value >= 19){
-                getSize();
-                }
-
-            if(act.value >= 21){
-                getSize();
-                  }
-
-            if(act.value >= 23){
-                getSize();
-                    }
-
-            if(act.value >=25){
-                getSize();
-                      }
-
-            if(act.value >= 27){
-                getSize();
-                        }
-
-            if(act.value >= 29){
-                getSize();
-                          }
-
-            if(act.value >= 31){
-                getSize();
-            }
-
-            if(act.value >= 33){
-                getSize();
-            }
-
-            if(act.value >= 35){
-                getSize();
-                    }
-                }
-
-        if(sat.value >= 1200){
-                    if(act.value >= 15){
-                getSize();
-                }
-
-                if(act.value >= 17){
-                  getSize();
-                  }
-
-                if(act.value >= 19){
-                    getSize();
-                    }
-
-                if(act.value >= 21){
-                    getSize();
-                      }
-
-                if(act.value >= 23){
-                    getSize();
-                        }
-
-                if(act.value >=25){
-                    getSize();
-                          }
-
-                if(act.value >= 27){
-                    getSize();
-                            }
-
-                if(act.value >= 29){
-                    getSize();
-                              }
-
-                if(act.value >= 31){
-                    getSize();
-                }
-
-                if(act.value >= 33){
-                    getSize();
-                }
-
-                if(act.value >= 35){
-                    getSize();
-                        }
-                    }
-
-            if(sat.value >= 1300){
-                if(act.value >= 15){
-                getSize();
-                }
-
-                if(act.value >= 17){
-                  getSize();
-                  }
-
-                if(act.value >= 19){
-                    getSize();
-                    }
-
-                if(act.value >= 21){
-                    getSize();
-                      }
-
-                if(act.value >= 23){
-                    getSize();
-                        }
-
-                if(act.value >=25){
-                    getSize();
-                          }
-
-                if(act.value >= 27){
-                    getSize();
-                            }
-
-                if(act.value >= 29){
-                    getSize();
-                              }
-
-                if(act.value >= 31){
-                    getSize();
-                }
-
-                if(act.value >= 33){
-                    getSize();
-                }
-
-                if(act.value >= 35){
-                    getSize();
-                        }
-                    }
-
-            if(sat.value >= 1400){
-               if(act.value >= 15){
-                getSize();
-                }
-
-                if(act.value >= 17){
-                  getSize();
-                  }
-
-                if(act.value >= 19){
-                    getSize();
-                    }
-
-                if(act.value >= 21){
-                    getSize();
-                      }
-
-                if(act.value >= 23){
-                    getSize();
-                        }
-
-                if(act.value >=25){
-                    getSize();
-                          }
-
-                if(act.value >= 27){
-                    getSize();
-                            }
-
-                if(act.value >= 29){
-                    getSize();
-                              }
-
-                if(act.value >= 31){
-                    getSize();
-                }
-
-                if(act.value >= 33){
-                    getSize();
-                }
-
-                if(act.value >= 35){
-                    getSize();
-                        }
-                    }
-
-            if(sat.value >= 1500){
-                if(act.value >= 15){
-                getSize();
-                }
-
-                if(act.value >= 17){
-                  getSize();
-                  }
-
-                if(act.value >= 19){
-                    getSize();
-                    }
-
-                if(act.value >= 21){
-                    getSize();
-                      }
-
-                if(act.value >= 23){
-                    getSize();
-                        }
-
-                if(act.value >=25){
-                    getSize();
-                          }
-
-                if(act.value >= 27){
-                    getSize();
-                            }
-
-                if(act.value >= 29){
-                    getSize();
-                              }
-
-                if(act.value >= 31){
-                    getSize();
-                }
-
-                if(act.value >= 33){
-                    getSize();
-                }
-
-                if(act.value >= 35){
-                    getSize();
-                        }
-                    }
+        actGlobal= act;
+        satGlobal = sat; // setting global var to local var
+
+        if(act > 15){
+          return act;
+        }
+        else{
+          return ("There are not many schools that will accept this ACT score.");
+        }
+        if(sat > 600){
+          return sat;
+        }
+        else{
+          return("There are not many schools that will accept this SAT score.");
+        }
+
+        //
+        // if(sat.value >= 600){
+        //     if(act.value >= 15){
+        //           getsize(); // not doing anything, just calling get Size
+        //           // not storing anything
+        //     }
+        //
+        //     if(act.value >= 17){
+        //         getSize();
+        //     }
+        //
+        //     if(act.value >= 19){
+        //         getSize();
+        //     }
+        //
+        //     if(act.value >= 21){
+        //         getSize();
+        //     }
+        //
+        //     if(act.value >= 23){
+        //        getSize();
+        //     }
+        //
+        //     if(act.value >=25){
+        //         getSize();
+        //       }
+        //
+        //     if(act.value >= 27){
+        //         getSize();
+        //       }
+        //
+        //     if(act.value >= 29){
+        //         getSize();
+        //       }
+        //
+        //     if(act.value >= 31){
+        //         getSize();
+        //       }
+        //
+        //     if(act.value >= 33){
+        //         getSize();
+        //       }
+        //
+        //     if(act.value >= 35){
+        //        getSize();
+        //       }
+        //   }
+        //
+        //    // 600 ends
+        // if(sat.value >= 700){ // get size is called regardless
+        //     if(act.value >= 15){
+        //         getSize();
+        //         }
+        //
+        //     if(act.value >= 17){
+        //           getSize();
+        //         }
+        //
+        //     if(act.value >= 19){
+        //            getSize();
+        //           }
+        //
+        //     if(act.value >= 21){
+        //             getSize();
+        //             }
+        //
+        //     if(act.value >= 23){
+        //             getSize();
+        //               }
+        //
+        //     if(act.value >=25){
+        //             getSize();
+        //                 }
+        //
+        //     if(act.value >= 27){
+        //            getSize();
+        //                   }
+        //
+        //     if(act.value >= 29){
+        //            getSize();
+        //                 }
+        //
+        //     if(act.value >= 31){
+        //           getSize();
+        //                 }
+        //
+        //     if(act.value >= 33){
+        //             getSize();
+        //         }
+        //
+        //     if(act.value >= 35){
+        //             getSize();
+        //             }
+        //     }
+        //
+        // if(sat.value >= 800){
+        //     if(act.value >= 15){
+        //               getSize();
+        //             }
+        //
+        //     if(act.value >= 17){
+        //                 getSize();
+        //               }
+        //
+        //     if(act.value >= 19){
+        //                 getSize();
+        //                 }
+        //
+        //     if(act.value >= 21){
+        //         getSize();
+        //           }
+        //
+        //     if(act.value >= 23){
+        //         getSize();
+        //             }
+        //
+        //     if(act.value >=25){
+        //         getSize();
+        //               }
+        //
+        //     if(act.value >= 27){
+        //         getSize();
+        //                 }
+        //
+        //     if(act.value >= 29){
+        //       getSize();
+        //                   }
+        //
+        //     if(act.value >= 31){
+        //         getSize();
+        //                     }
+        //
+        //     if(act.value >= 33){
+        //        getSize();
+        //                     }
+        //
+        //     if(act.value >= 35){
+        //         getSize();
+        //             }
+        //         }
+        //
+        // if(sat.value >= 900){
+        //   if(act.value >= 15){
+        //     getSize();
+        //     }
+        //
+        //     if(act.value >= 17){
+        //       getSize();
+        //       }
+        //
+        //     if(act.value >= 19){
+        //         getSize();
+        //         }
+        //
+        //     if(act.value >= 21){
+        //         getSize();
+        //           }
+        //
+        //     if(act.value >= 23){
+        //         getSize();
+        //             }
+        //
+        //     if(act.value >=25){
+        //         getSize();
+        //               }
+        //
+        //     if(act.value >= 27){
+        //         getSize();
+        //                 }
+        //
+        //     if(act.value >= 29){
+        //         getSize();
+        //                   }
+        //
+        //     if(act.value >= 31){
+        //         getSize();
+        //     }
+        //
+        //     if(act.value >= 33){
+        //         getSize();
+        //     }
+        //
+        //     if(act.value >= 35){
+        //         getSize();
+        //             }
+        //         }
+        //
+        // if(sat.value >= 1000){
+        //     if(act.value >= 15){
+        //       getSize();
+        //     }
+        //
+        //     else if(act.value >= 17){
+        //       getSize();
+        //       }
+        //
+        //     if(act.value >= 19){
+        //         getSize();
+        //         }
+        //
+        //     if(act.value >= 21){
+        //         getSize();
+        //           }
+        //
+        //     if(act.value >= 23){
+        //         getSize();
+        //             }
+        //
+        //     if(act.value >=25){
+        //         getSize();
+        //               }
+        //
+        //     if(act.value >= 27){
+        //         getSize();
+        //                 }
+        //
+        //     if(act.value >= 29){
+        //         getSize();
+        //                   }
+        //
+        //     if(act.value >= 31){
+        //         getSize();
+        //     }
+        //
+        //     if(act.value >= 33){
+        //         getSize();
+        //     }
+        //
+        //     if(act.value >= 35){
+        //         getSize();
+        //             }
+        //         }
+        //
+        // if(sat.value >= 1100){
+        //       if(act.value >= 15){
+        //     getSize();
+        //     }
+        //
+        //     if(act.value >= 17){
+        //       getSize();
+        //       }
+        //
+        //     if(act.value >= 19){
+        //         getSize();
+        //         }
+        //
+        //     if(act.value >= 21){
+        //         getSize();
+        //           }
+        //
+        //     if(act.value >= 23){
+        //         getSize();
+        //             }
+        //
+        //     if(act.value >=25){
+        //         getSize();
+        //               }
+        //
+        //     if(act.value >= 27){
+        //         getSize();
+        //                 }
+        //
+        //     if(act.value >= 29){
+        //         getSize();
+        //                   }
+        //
+        //     if(act.value >= 31){
+        //         getSize();
+        //     }
+        //
+        //     if(act.value >= 33){
+        //         getSize();
+        //     }
+        //
+        //     if(act.value >= 35){
+        //         getSize();
+        //             }
+        //         }
+        //
+        // if(sat.value >= 1200){
+        //             if(act.value >= 15){
+        //         getSize();
+        //         }
+        //
+        //         if(act.value >= 17){
+        //           getSize();
+        //           }
+        //
+        //         if(act.value >= 19){
+        //             getSize();
+        //             }
+        //
+        //         if(act.value >= 21){
+        //             getSize();
+        //               }
+        //
+        //         if(act.value >= 23){
+        //             getSize();
+        //                 }
+        //
+        //         if(act.value >=25){
+        //             getSize();
+        //                   }
+        //
+        //         if(act.value >= 27){
+        //             getSize();
+        //                     }
+        //
+        //         if(act.value >= 29){
+        //             getSize();
+        //                       }
+        //
+        //         if(act.value >= 31){
+        //             getSize();
+        //         }
+        //
+        //         if(act.value >= 33){
+        //             getSize();
+        //         }
+        //
+        //         if(act.value >= 35){
+        //             getSize();
+        //                 }
+        //             }
+        //
+        //     if(sat.value >= 1300){
+        //         if(act.value >= 15){
+        //         getSize();
+        //         }
+        //
+        //         if(act.value >= 17){
+        //           getSize();
+        //           }
+        //
+        //         if(act.value >= 19){
+        //             getSize();
+        //             }
+        //
+        //         if(act.value >= 21){
+        //             getSize();
+        //               }
+        //
+        //         if(act.value >= 23){
+        //             getSize();
+        //                 }
+        //
+        //         if(act.value >=25){
+        //             getSize();
+        //                   }
+        //
+        //         if(act.value >= 27){
+        //             getSize();
+        //                     }
+        //
+        //         if(act.value >= 29){
+        //             getSize();
+        //                       }
+        //
+        //         if(act.value >= 31){
+        //             getSize();
+        //         }
+        //
+        //         if(act.value >= 33){
+        //             getSize();
+        //         }
+        //
+        //         if(act.value >= 35){
+        //             getSize();
+        //                 }
+        //             }
+        //
+        //     if(sat.value >= 1400){
+        //        if(act.value >= 15){
+        //         getSize();
+        //         }
+        //
+        //         if(act.value >= 17){
+        //           getSize();
+        //           }
+        //
+        //         if(act.value >= 19){
+        //             getSize();
+        //             }
+        //
+        //         if(act.value >= 21){
+        //             getSize();
+        //               }
+        //
+        //         if(act.value >= 23){
+        //             getSize();
+        //                 }
+        //
+        //         if(act.value >=25){
+        //             getSize();
+        //                   }
+        //
+        //         if(act.value >= 27){
+        //             getSize();
+        //                     }
+        //
+        //         if(act.value >= 29){
+        //             getSize();
+        //                       }
+        //
+        //         if(act.value >= 31){
+        //             getSize();
+        //         }
+        //
+        //         if(act.value >= 33){
+        //             getSize();
+        //         }
+        //
+        //         if(act.value >= 35){
+        //             getSize();
+        //                 }
+        //             }
+        //
+        //     if(sat.value >= 1500){
+        //         if(act.value >= 15){
+        //         getSize();
+        //         }
+        //
+        //         if(act.value >= 17){
+        //           getSize();
+        //           }
+        //
+        //         if(act.value >= 19){
+        //             getSize();
+        //             }
+        //
+        //         if(act.value >= 21){
+        //             getSize();
+        //               }
+        //
+        //         if(act.value >= 23){
+        //             getSize();
+        //                 }
+        //
+        //         if(act.value >=25){
+        //             getSize();
+        //                   }
+        //
+        //         if(act.value >= 27){
+        //             getSize();
+        //                     }
+        //
+        //         if(act.value >= 29){
+        //             getSize();
+        //                       }
+        //
+        //         if(act.value >= 31){
+        //             getSize();
+        //         }
+        //
+        //         if(act.value >= 33){
+        //             getSize();
+        //         }
+        //
+        //         if(act.value >= 35){
+        //             getSize();
+        //                 }
+        //             }
                 }
 
     //API variable name - cost//
@@ -837,17 +862,24 @@
           }
 
 function showResults(response) {
-    for (let i = 0; i<10; i++){
+  let results = response.results;
+  results = results.filter(function(school){
+    return school.act >= actScore && school.sat >= satScore; //&& school.size = size; //
+
+// dont need if else statements just make sure global variables are present and compare them to array
+    // only extracts schools that match filter
+
+  })
+    for (let i = 0; i<10; i++){ // looks thru first 10 of new array (which holds objs that match filter)
         let li = document.createElement("li");
         document.getElementById("resultsforjs").appendChild(li);
-        var responseName = response.results[i]["school.name"];
-        var size = response.results[i]["2013.student.size"];
+        var responseName = results[i]["school.name"];
+        var size = results[i]["2013.student.size"];
         var userResponse = responseName + ", Size: " + size + " students";
         console.log(userResponse);
-//        li.appendChild(userResponse);
-//        let htmlInput = document.getElementById("resultsforjs");
-//        li.appendChild(responseName);
-//        htmlInput.appendChild(li);
+        let htmlInput = document.getElementById("resultsforjs");
+        li.innerHTML = userResponse + " " + responseName;
+        htmlInput.appendChild(li);
 
 
     }
@@ -857,11 +889,17 @@ function showResults2(response){
      for (let i = 11; i<21; i++){
         let li = document.createElement("li");
         document.getElementById("resultsforjs2").appendChild(li);
-        var responseName = response.results[i]["school.name"];
-        var size = response.results[i]["2013.student.size"];
+        var responseName = results[i]["school.name"];
+        var size = results[i]["2013.student.size"];
         var userResponse = responseName + ", Size: " + size + " students";
         console.log(userResponse);
 }
+// show results by 10
+// button to display next page
+// click button --> takes 10 results and replaces with next 10
+// global var that keeps track of offset (click button once results 11-20, indep of results)
+// if less than 10 schools, try catch loop (try code, catch error and display output message ("no other schools match"))
+// js syntax for trycatch is mostly same as java
 
 
 }
