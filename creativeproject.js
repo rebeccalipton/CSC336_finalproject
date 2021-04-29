@@ -25,6 +25,10 @@
         document.getElementById("next3").onclick = next3;
 
         document.getElementById("back4").onclick = back4;
+        
+        document.getElementById("moreSchools").onclick = next4;
+        
+        document.getElementById("back5").onclick = back5;
 
 //        price.addEventListener("change", quiz);
 
@@ -156,6 +160,17 @@
         move();
     }
 
+    function next4(){
+        document.querySelector("#form5").classList.remove("hidden");
+        document.querySelector("#form4").classList.add("hidden"); 
+    }
+    
+    function back5(){
+        document.querySelector("#form4").classList.remove("hidden");
+        document.querySelector("#form5").classList.add("hidden"); 
+        
+    }
+    
     function showLA(){
       var princetonLink = document.createElement("a");
       var princetonText = document.createTextNode("Princeton's Take on Liberal Arts");
@@ -175,6 +190,7 @@
             data = JSON.parse(data); 
         //  data = JSON. stringify(data); -> makes the whole JSON object appear// 
             showResults(data);
+            showResults2(data);
         })
         .catch(function(error) {
           console.error("Problem with fetch request");
@@ -788,20 +804,32 @@
           }
 
 function showResults(response) {
-    console.log(response);
-//    for(let i=0; i<response.length; i++){
-//            let responses = response[i];
-//            let list = document.createElement("li");
-//            list.setAttribute("p", responses);    
-//            document.getElementById("resultsforjs").appendChild(list);
-//        }
-//        for (var i = 0; i < results.metadata.length; i++) {
-//            console.log(results.metadata[i].school.name);
-//        }
+    for (let i = 0; i<10; i++){
+        let li = document.createElement("li");
+        document.getElementById("resultsforjs").appendChild(li);
+        var responseName = response.results[i]["school.name"];
+        var size = response.results[i]["2013.student.size"];
+        var userResponse = responseName + ", Size: " + size + " students";
+        console.log(userResponse);
+//        li.appendChild(userResponse);
+//        let htmlInput = document.getElementById("resultsforjs");
+//        li.appendChild(responseName);
+//        htmlInput.appendChild(li);
+    
+        
+    }
+}
 
-    document.getElementById("resultsforjs").innerHTML = response;
-    //need to print the results array//
-//
-//  }
+function showResults2(response){
+     for (let i = 11; i<21; i++){
+        let li = document.createElement("li");
+        document.getElementById("resultsforjs2").appendChild(li);
+        var responseName = response.results[i]["school.name"];
+        var size = response.results[i]["2013.student.size"];
+        var userResponse = responseName + ", Size: " + size + " students";
+        console.log(userResponse);
+}
+
+  
 }
 })();
