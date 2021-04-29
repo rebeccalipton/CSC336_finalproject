@@ -165,15 +165,11 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
     }
 
     function next4(){
-        document.querySelector("#form5").classList.remove("hidden");
-        document.querySelector("#form4").classList.add("hidden");
-    }
-
-    function back5(){
-        document.querySelector("#form4").classList.remove("hidden");
-        document.querySelector("#form5").classList.add("hidden");
+        fetchAdmission();
+        randomizeResults();
 
     }
+
 
     function showLA(){
       var princetonLink = document.createElement("a");
@@ -184,6 +180,14 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
       document.getElementById("opinions").append(princetonLink);
 
     }
+    function aboveTuition(){
+      let above = document.getElementById("above").checked;
+      if(above == "True"){
+        console.log('above = true');
+      }
+    }
+
+
 
 
 
@@ -300,22 +304,22 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
 function showResults(response) {
   let results = response.results;
   results = results.filter(function(school){
-    // if(school.size < 5000){
-    //   return school.size < 5000 && school.act >= actGlobal && school.sat >= satGlobal && school.tuition >= tuitionGlobal;
-    // }
-    // else if(school.size > 5000 && school.size < 15001){
-    //
-    //   return school.size > 5000 && school.size < 15001 && school.act >= actGlobal && school.sat >= satGlobal && school.tuition >= tuitionGlobal;
-    // }
-    // else{
-    //   return school.size >= 15001 && school.act >= actGlobal && school.sat >= satGlobal && school.tuition >= tuitionGlobal;
-    // }
-   return school.act >= actGlobal && school.sat >= satGlobal; //&& school.size = size; //
+    if(school.size < 5000){
+      return school.size = "small";
+    }
+    else if(school.size > 5000 && school.size < 15001){
+      return school.size = "medium";
+    }
+    else{
+      return school.size = "large";
+    }
+    return school.act >= actScore && school.sat >= satScore; //&& school.size = size; //
 
 // dont need if else statements just make sure global variables are present and compare them to array
     // only extracts schools that match filter
 
   })
+
     for (let i = 0; i<10; i++){ // looks thru first 10 of new array (which holds objs that match filter)
         let li = document.createElement("li");
         let ulSize = document.createElement("ul");
@@ -331,7 +335,8 @@ function showResults(response) {
         document.getElementById("resultsforjs").appendChild(ulACT);
         var responseName = results[i]["school.name"];
         var size = results[i]["2018.student.size"];
-
+      //  var link = results[i]["school.url"];
+    //    var userResponse = responseName + ", Size: " + size + " students";
         console.log(responseName);
         let htmlInput = document.getElementById("resultsforjs");
         li.innerHTML = responseName;
@@ -345,18 +350,16 @@ function showResults(response) {
         htmlInput.appendChild(ulSAT);
         htmlInput.appendChild(ulACT);
 
-
     }
 }
 
-function showResults2(response){
-     for (let i = 11; i<21; i++){
-        let li = document.createElement("li");
-        document.getElementById("resultsforjs2").appendChild(li);
-        var responseName = results[i]["school.name"];
-        var size = results[i]["2013.student.size"];
-        var userResponse = responseName + ", Size: " + size + " students" ;
-
+function randomizeResults(response){
+    let randomNum = Math.floor(Math.random)
+    console.log(randomNum);
+    clearResults();
+     for (let i = 0; i<10; i++){
+        i = randomNum;
+        showResults();
 }
 // show results by 10
 // button to display next page
@@ -364,7 +367,10 @@ function showResults2(response){
 // global var that keeps track of offset (click button once results 11-20, indep of results)
 // if less than 10 schools, try catch loop (try code, catch error and display output message ("no other schools match"))
 // js syntax for trycatch is mostly same as java
-
-
 }
+
+function clearResults() {
+    document.getElementById("resultsforjs").innerHTML = "";
+}
+
 })();
