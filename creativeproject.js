@@ -4,7 +4,7 @@
 
 
 (function () {
-    //use strict//
+
     "use strict";
     //timeout global variable for time bars//
         var timeout = null;
@@ -13,16 +13,7 @@
         let sizeGlobal = "";
         let tuitionGlobal = 0;
 
-    // rebecca api key
-    // this url works in browser
-//const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.degrees_awarded.predominant=2,3&fields=school.name,2013.student.size&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
-
-
-// custom url
-// 2013.school.url
 const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,school.school_url,latest.admissions.act_scores.midpoint.cumulative,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
-//const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.degrees_awarded.predominant=2,3&fields=school.name,2018.student.size&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
-//const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,2018.tuition.out_of_state.overall&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
 
     window.onload = function () {
 //what happens when user clicks back and next//
@@ -189,10 +180,6 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
       }
     }
 
-
-
-
-
     function fetchAdmission(){
         fetch(url)
         .then(checkStatus)
@@ -230,92 +217,90 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
     function satAct(){
         let sat = parseInt(document.getElementById("sat"));
         let act = parseInt(document.getElementById("act"));
-        actGlobal= act;
+        actGlobal = act;
         satGlobal = sat; // setting global var to local var
 
-        if(act > 15){
-          return act;
+        if(act.value > 15){
+          return actGlobal;
         }
         else{
           return ("There are not many schools that will accept this ACT score.");
         }
-        if(sat > 600){
-          return sat;
+        if(sat.value > 600){
+          return satGlobal;
         }
         else{
           return("There are not many schools that will accept this SAT score.");
         }
-                }
+      }
 
     //API variable name - cost//
     function quiz(){
         let price = document.getElementById("price");
         tuitionGlobal = price;
         if(price.value == "0-5000"){
-          price = 5000;
+          tuitionGlobal = 5000;
         }
 
           else if (price.value == "5000-10000"){
-            price = 10000;
+            tuitionGlobal = 10000;
           }
 
           else if (price.value == "10000-20000"){
-            price = 20000;
+            tuitionGlobal = 20000;
           }
 
           else if (price.value == "20000-30000"){
-            price = 30000;
+            tuitionGlobal = 30000;
           }
 
           else if (price.value == "30000-40000"){
-            price = 40000;
+              tuitionGlobal= 40000;
           }
 
           else if (price.value == "40000-50000"){
-            price = 50000;
+              tuitionGlobal = 50000;
           }
 
           else if (price.value == "50000-60000"){
-            price = 60000;
+            tuitionGlobal = 60000;
           }
 
           else if (price.value == "60000-70000"){
-            price = 70000;
+            tuitionGlobal = 70000;
           }
 
           else if (price.value == "70000-80000"){
-            price = 80000;
+            tuitionGlobal= 80000;
           }
 
           else if (price.value == "80000-90000"){
-            price = 90000;
+            tuitionGlobal = 90000;
           }
 
           else if (price.value == "90000-100000"){
-            price = 100000;
+            tuitionGlobal = 100000;
           }
 
           else if (price.value == "No limit"){
-            price = 1000000000;
+              tuitionGlobal = 1000000000;
             }
           }
 
 function showResults(response) {
+  //quiz();
+  //satAct();
+  console.log(actGlobal);
+  console.log(satGlobal);
+  console.log(tuitionGlobal);
   let results = response.results;
-  results = results.filter(function(school){
-    if(school.size < 5000){
-      return school.size = "small";
+  let schools = [];
+  for (let i = 0; i < results.length; i++){
+    if(results[i].act < actGlobal && results[i].sat < satGlobal){
+      schools.append(results[i]);
     }
-    else if(school.size > 5000 && school.size < 15001){
-      return school.size = "medium";
-    }
-    else{
-      return school.size = "large";
-    }
-  //  return school.act >= act && school.sat >= sat; //&& school.size = size; //
+  }
 
-
-  })
 
     for (let i = 0; i<10; i++){ // looks thru first 10 of new array (which holds objs that match filter)
         let li = document.createElement("li");
@@ -336,30 +321,13 @@ function showResults(response) {
       //  document.getElementById("resultsforjs").appendChild(alink);
         var responseName = results[i]["school.name"];
         var size = results[i]["2018.student.size"];
-        // size.filter(function(school){
-        //   if(school.size < 5000){
-        //     return school.size = "small";
-        //   }
-        //   else if(school.size > 5000 && school.size < 15001){
-        //     return school.size = "medium";
-        //   }
-        //   else{
-        //     return school.size = "large";
-        //   }
-        // })
+
         var tuition = results[i]["latest.cost.tuition.out_of_state"];
-        // tuition.filter(function(school){
-        //   return school.tuition <= tuitionGlobal;
-        // })
+
         var sat = results[i]["latest.admissions.sat_scores.average.overall"];
-        // sat.filter(function(school){
-        //   return school.sat <= satGlobal;
-        // })
+
         var act = results[i]["latest.admissions.act_scores.midpoint.cumulative"];
-        // act.filter(function(school){
-        //   return school.act <= actGlobal;
-        // })
-      //  var link = results[i]["school.school_url"];
+
 
         console.log(responseName);
         let htmlInput = document.getElementById("resultsforjs");
