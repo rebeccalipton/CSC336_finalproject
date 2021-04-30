@@ -206,11 +206,18 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
     function getSize(){
         let size = document.getElementById("schoolSize");
         sizeGlobal = size;
-
+        if(size.value == "small"){
+          sizeGlobal = 5000;
+        }
+        else if (size.value == "medium"){
+          sizeGlobal = 15000;
+        }
+        else if (size.value == "large"){
+          sizeGlobal = 70000;
         }
 
+      }
 
-    //API variable name = admissions//
 
 function act(){
   let act = document.getElementById("act");
@@ -249,6 +256,8 @@ function act(){
     actGlobal = "NA";
   }
 }
+
+
 function sat(){
     let sat = document.getElementById("sat");
     satGlobal = sat; // setting global var to local var
@@ -346,14 +355,16 @@ function sat(){
           }
 
 function showResults(response) {
+  getSize();
   console.log("ACT score: " + actGlobal);
   console.log("SAT score: " + satGlobal);
   console.log("Tuition: " + tuitionGlobal);
+  console.log("Size: " + sizeGlobal);
   //console.log(results[i].price);
   let results = response.results;
   let schools = [];
   for (let i = 0; i < results.length; i++){
-    if(results[i].price < tuitionGlobal){
+    if(results[i].price < tuitionGlobal && results[i].act < actGlobal && results[i].sat < satGlobal + results[i].size < sizeGlobal){
       schools.append(results[i]);
     }
   }
@@ -367,7 +378,6 @@ function showResults(response) {
         let ulACT = document.createElement("ul");
         let ulLink = document.createElement("ul");
         let alink = document.createElement("a");
-
 
 
         document.getElementById("resultsforjs").appendChild(li);
@@ -406,8 +416,8 @@ function showResults(response) {
 }
 
 function randomizeResults(response){
-    let randomNum = Math.floor(Math.random)
-    console.log(randomNum);
+    let randomNum = Math.floor(Math.random);
+    console.log("randomnum" + randomNum);
     clearResults();
      for (let i = 0; i<10; i++){
         i = randomNum;
