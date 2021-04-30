@@ -146,6 +146,8 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
 
         fetchAdmission();
         quiz();
+        sat();
+        act();
     }
 
     function back4 (){
@@ -173,12 +175,7 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
       document.getElementById("opinions").append(princetonLink);
 
     }
-    function aboveTuition(){
-      let above = document.getElementById("above").checked;
-      if(above == "True"){
-        console.log('above = true');
-      }
-    }
+
 
     function fetchAdmission(){
         fetch(url)
@@ -214,45 +211,47 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
 
 
     //API variable name = admissions//
-    function satAct(){
-        let sat = parseInt(document.getElementById("sat"));
-        let act = parseInt(document.getElementById("act"));
-        actGlobal = act;
-        satGlobal = sat; // setting global var to local var
 
-        if(act.value == "0-10"){
-          actGlobal = 10;
-        }
-        else if(act.value == "11-13"){
-          actGlobal = 13;
-        }
-        else if(act.value == "14-16"){
-          actGlobal = 16;
-        }
-        else if(act.value == "17-19"){
-          actGlobal = 19;
-        }
-        else if(act.value == "20-22"){
-          actGlobal = 22;
-        }
-        else if(act.value == "23-25"){
-          actGlobal = 25;
-        }
-        else if(act.value == "26-28"){
-          actGlobal = 28;
-        }
-        else if(act.value == "29-31"){
-          actGlobal = 31;
-        }
-        else if(act.value == "32-34"){
-          actGlobal = 34;
-        }
-        else if(act.value == "35-36"){
-          actGlobal = 36;
-        }
-        else{
-          actGlobal = "NA";
-        }
+function act(){
+  let act = document.getElementById("act");
+  actGlobal = act;
+  if(act.value == "0-10"){
+    actGlobal = 10;
+  }
+  else if(act.value== "11-13"){
+    actGlobal = 13;
+  }
+  else if(act.value == "14-16"){
+    actGlobal = 16;
+  }
+  else if(act.value == "17-19"){
+    actGlobal = 19;
+  }
+  else if(act.value == "20-22"){
+    actGlobal = 22;
+  }
+  else if(act.value == "23-25"){
+    actGlobal = 25;
+  }
+  else if(act.value == "26-28"){
+    actGlobal = 28;
+  }
+  else if(act.value == "29-31"){
+    actGlobal = 31;
+  }
+  else if(act.value == "32-34"){
+    actGlobal = 34;
+  }
+  else if(act.value == "35-36"){
+    actGlobal = 36;
+  }
+  else if(act.value == "No ACT"){
+    actGlobal = "NA";
+  }
+}
+function sat(){
+    let sat = document.getElementById("sat");
+    satGlobal = sat; // setting global var to local var
 
         if(sat.value == "0-600"){
           satGlobal = 600;
@@ -287,7 +286,7 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
         else if (sat.value == "1501-1600"){
           satGlobal = 1600;
         }
-        else{
+        else if (sat.value == "No SAT"){
           satGlobal = "NA";
         }
 
@@ -347,11 +346,9 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
           }
 
 function showResults(response) {
-  //quiz();
-  //satAct();
-  console.log(actGlobal);
-  console.log(satGlobal);
-  console.log(tuitionGlobal);
+  console.log("ACT score: " + actGlobal);
+  console.log("SAT score: " + satGlobal);
+  console.log("Tuition: " + tuitionGlobal);
   //console.log(results[i].price);
   let results = response.results;
   let schools = [];
