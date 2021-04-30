@@ -13,8 +13,8 @@
         let sizeGlobal = "";
         let tuitionGlobal = 0;
 
-const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,school.school_url,latest.admissions.act_scores.midpoint.cumulative,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
-
+//const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,school.school_url,latest.admissions.act_scores.midpoint.cumulative,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
+const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,school.school_url,latest.admissions.act_scores.midpoint.cumulative,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state,_per_page=100&_page=0&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
     window.onload = function () {
 //what happens when user clicks back and next//
         document.getElementById("start").onclick = form1;
@@ -372,6 +372,7 @@ function showResults(response) {
       schools.append(results[i]);
     }
   }
+  console.log(results);
 
 
     for (let i = 0; i<10; i++){ // looks thru first 10 of new array (which holds objs that match filter)
