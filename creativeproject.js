@@ -360,11 +360,15 @@ function showResults(response) {
   console.log("SAT score: " + satGlobal);
   console.log("Tuition: " + tuitionGlobal);
   console.log("Size: " + sizeGlobal);
-  //console.log(results[i].price);
+
   let results = response.results;
+  // console.log('results ' + results);
+  // let results2 = results.filter(function(school){
+  //   return school.price < tuitionGlobal && school.act < actGlobal && school.sat < satGlobal && school.size < sizeGlobal;
+  // })
   let schools = [];
   for (let i = 0; i < results.length; i++){
-    if(results[i].price < tuitionGlobal && results[i].act < actGlobal && results[i].sat < satGlobal + results[i].size < sizeGlobal){
+    if(results[i].price < tuitionGlobal && results[i].act < actGlobal && results[i].sat < satGlobal && results[i].size < sizeGlobal){
       schools.append(results[i]);
     }
   }
