@@ -10,11 +10,10 @@
         var timeout = null;
         let actGlobal = 0;
         let satGlobal = 0;
-        let sizeGlobal = "";
+        let sizeGlobal = 0;
         let tuitionGlobal = 0;
 
-//const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,school.school_url,latest.admissions.act_scores.midpoint.cumulative,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
-const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,school.school_url,latest.admissions.act_scores.midpoint.cumulative,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state,_per_page=100&_page=0&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
+const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,school.school_url,latest.admissions.act_scores.midpoint.cumulative,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
     window.onload = function () {
 //what happens when user clicks back and next//
         document.getElementById("start").onclick = form1;
@@ -354,7 +353,11 @@ function sat(){
             }
           }
 
+
+
+
 function showResults(response) {
+
   getSize();
   console.log("ACT score: " + actGlobal);
   console.log("SAT score: " + satGlobal);
@@ -362,58 +365,112 @@ function showResults(response) {
   console.log("Size: " + sizeGlobal);
 
   let results = response.results;
+
+
   // console.log('results ' + results);
   // let results2 = results.filter(function(school){
   //   return school.price < tuitionGlobal && school.act < actGlobal && school.sat < satGlobal && school.size < sizeGlobal;
   // })
   let schools = [];
   for (let i = 0; i < results.length; i++){
-    if(results[i].price < tuitionGlobal && results[i].act < actGlobal && results[i].sat < satGlobal && results[i].size < sizeGlobal){
-      schools.append(results[i]);
-    }
-  }
-  console.log(results);
+    var responseName = results[i]["school.name"];
+    var size = results[i]["2018.student.size"];
 
+    var price = (results[i]["latest.cost.tuition.out_of_state"]);
 
-    for (let i = 0; i<10; i++){ // looks thru first 10 of new array (which holds objs that match filter)
+    var sat = results[i]["latest.admissions.sat_scores.average.overall"];
+
+    var act = results[i]["latest.admissions.act_scores.midpoint.cumulative"];
+  //console.log("test2"); // entering for loop yes
+  console.log("sat  " + sat);
+  console.log("satGlobal  " + satGlobal);
+    if (price < tuitionGlobal && act < actGlobal && sat < satGlobal && size < sizeGlobal){
+        console.log("PRICE WORKS"); // entering if statement no
+        console.log(results[i]["school.name"]);
+        console.log("TEST+ " + responseName);
         let li = document.createElement("li");
         let ulSize = document.createElement("ul");
-        let ulTuition = document.createElement("ul");
+        let ulPrice = document.createElement("ul");
         let ulSAT = document.createElement("ul");
         let ulACT = document.createElement("ul");
         let ulLink = document.createElement("ul");
         let alink = document.createElement("a");
 
-
         document.getElementById("resultsforjs").appendChild(li);
         document.getElementById("resultsforjs").appendChild(ulSize);
-        document.getElementById("resultsforjs").appendChild(ulTuition);
+        document.getElementById("resultsforjs").appendChild(ulPrice);
         document.getElementById("resultsforjs").appendChild(ulSAT);
         document.getElementById("resultsforjs").appendChild(ulACT);
-      //  document.getElementById("resultsforjs").appendChild(alink);
+
         var responseName = results[i]["school.name"];
         var size = results[i]["2018.student.size"];
 
-        var tuition = results[i]["latest.cost.tuition.out_of_state"];
+        var price = results[i]["latest.cost.tuition.out_of_state"];
 
         var sat = results[i]["latest.admissions.sat_scores.average.overall"];
 
         var act = results[i]["latest.admissions.act_scores.midpoint.cumulative"];
 
-
-      //  console.log(responseName);
         let htmlInput = document.getElementById("resultsforjs");
         li.innerHTML = responseName;
         ulSize.innerHTML = "Size: " + size + " students";
-        ulTuition.innerHTML = "Tuition: $" + tuition;
+        ulPrice.innerHTML = "Price: $" + price;
         ulSAT.innerHTML = "Average SAT Score: " + sat;
         ulACT.innerHTML = "Median ACT Score: " + act;
       //  alink.setAttribute("href") = link;
         htmlInput.appendChild(li);
         htmlInput.appendChild(ulSize);
-        htmlInput.appendChild(ulTuition);
+        htmlInput.appendChild(ulPrice);
         htmlInput.appendChild(ulSAT);
         htmlInput.appendChild(ulACT);
+
+    }
+
+  }
+
+
+
+
+
+    for (let i = 0; i<10; i++){ // looks thru first 10 of new array (which holds objs that match filter)
+        // let li = document.createElement("li");
+        // let ulSize = document.createElement("ul");
+        // let ulPrice = document.createElement("ul");
+        // let ulSAT = document.createElement("ul");
+        // let ulACT = document.createElement("ul");
+        // let ulLink = document.createElement("ul");
+        // let alink = document.createElement("a");
+
+
+        // document.getElementById("resultsforjs").appendChild(li);
+        // document.getElementById("resultsforjs").appendChild(ulSize);
+        // document.getElementById("resultsforjs").appendChild(ulPrice);
+        // document.getElementById("resultsforjs").appendChild(ulSAT);
+        // document.getElementById("resultsforjs").appendChild(ulACT);
+      //  document.getElementById("resultsforjs").appendChild(alink);
+        // var responseName = results[i]["school.name"];
+        // var size = results[i]["2018.student.size"];
+        //
+        // var price = results[i]["latest.cost.tuition.out_of_state"];
+        //
+        // var sat = results[i]["latest.admissions.sat_scores.average.overall"];
+        //
+        // var act = results[i]["latest.admissions.act_scores.midpoint.cumulative"];
+
+
+      //  console.log(responseName);
+      //   let htmlInput = document.getElementById("resultsforjs");
+      //   li.innerHTML = responseName;
+      //   ulSize.innerHTML = "Size: " + size + " students";
+      //   ulPrice.innerHTML = "Price: $" + price;
+      //   ulSAT.innerHTML = "Average SAT Score: " + sat;
+      //   ulACT.innerHTML = "Median ACT Score: " + act;
+      // //  alink.setAttribute("href") = link;
+      //   htmlInput.appendChild(li);
+      //   htmlInput.appendChild(ulSize);
+      //   htmlInput.appendChild(ulPrice);
+      //   htmlInput.appendChild(ulSAT);
+      //   htmlInput.appendChild(ulACT);
         //htmlInput.appendChild(ulLink);
 
 
