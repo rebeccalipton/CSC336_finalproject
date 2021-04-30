@@ -13,7 +13,10 @@
         let sizeGlobal = 0;
         let tuitionGlobal = 0;
 
-const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,school.school_url,latest.admissions.act_scores.midpoint.cumulative,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
+//new //const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,school.school_url,latest.admissions.act_scores.midpoint.cumulative,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state&page=43&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
+const url_start = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,school.school_url,latest.admissions.act_scores.midpoint.cumulative,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state&page="
+const url_end = "&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
+//const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=school.name,2018.student.size,school.school_url,latest.admissions.act_scores.midpoint.cumulative,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b"
     window.onload = function () {
 //what happens when user clicks back and next//
         document.getElementById("start").onclick = form1;
@@ -176,7 +179,25 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
     }
 
 
+    // function fetchAdmission(){
+    //     fetch(url)
+    //     .then(checkStatus)
+    //     .then(function(data){
+    //
+    //         console.log(data);
+    //         //makes JSON into an array just need to print the results array - in console//
+    //         data = JSON.parse(data);
+    //     //  data = JSON. stringify(data); -> makes the whole JSON object appear//
+    //         showResults(data);
+    //     })
+    //     .catch(function(error) {
+    //       console.error(url);
+    //       console.error("Problem with fetch request");
+    //     });
+    // }
     function fetchAdmission(){
+        let randomNum = Math.floor(Math.random() * 341);
+        let url = url_start + randomNum + url_end;
         fetch(url)
         .then(checkStatus)
         .then(function(data){
