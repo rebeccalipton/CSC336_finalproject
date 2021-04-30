@@ -206,13 +206,13 @@ const url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=sch
         let size = document.getElementById("schoolSize");
         sizeGlobal = size;
         if(size.value == "small"){
-          sizeGlobal = 5000;
+          sizeGlobal = 0;
         }
         else if (size.value == "medium"){
-          sizeGlobal = 15000;
+          sizeGlobal = 5000;
         }
         else if (size.value == "large"){
-          sizeGlobal = 70000;
+          sizeGlobal = 15000;
         }
 
       }
@@ -366,11 +366,6 @@ function showResults(response) {
 
   let results = response.results;
 
-
-  // console.log('results ' + results);
-  // let results2 = results.filter(function(school){
-  //   return school.price < tuitionGlobal && school.act < actGlobal && school.sat < satGlobal && school.size < sizeGlobal;
-  // })
   let schools = [];
   for (let i = 0; i < results.length; i++){
     var responseName = results[i]["school.name"];
@@ -382,12 +377,9 @@ function showResults(response) {
 
     var act = results[i]["latest.admissions.act_scores.midpoint.cumulative"];
   //console.log("test2"); // entering for loop yes
-  console.log("sat  " + sat);
-  console.log("satGlobal  " + satGlobal);
-    if (price < tuitionGlobal && act < actGlobal && sat < satGlobal && size < sizeGlobal){
-        console.log("PRICE WORKS"); // entering if statement no
-        console.log(results[i]["school.name"]);
-        console.log("TEST+ " + responseName);
+  console.log("size  " + size);
+  console.log("sizeGlobal  " + sizeGlobal);
+    if (price < tuitionGlobal && act < actGlobal && sat < satGlobal && size > sizeGlobal){
         let li = document.createElement("li");
         let ulSize = document.createElement("ul");
         let ulPrice = document.createElement("ul");
@@ -429,52 +421,6 @@ function showResults(response) {
   }
 
 
-
-
-
-    for (let i = 0; i<10; i++){ // looks thru first 10 of new array (which holds objs that match filter)
-        // let li = document.createElement("li");
-        // let ulSize = document.createElement("ul");
-        // let ulPrice = document.createElement("ul");
-        // let ulSAT = document.createElement("ul");
-        // let ulACT = document.createElement("ul");
-        // let ulLink = document.createElement("ul");
-        // let alink = document.createElement("a");
-
-
-        // document.getElementById("resultsforjs").appendChild(li);
-        // document.getElementById("resultsforjs").appendChild(ulSize);
-        // document.getElementById("resultsforjs").appendChild(ulPrice);
-        // document.getElementById("resultsforjs").appendChild(ulSAT);
-        // document.getElementById("resultsforjs").appendChild(ulACT);
-      //  document.getElementById("resultsforjs").appendChild(alink);
-        // var responseName = results[i]["school.name"];
-        // var size = results[i]["2018.student.size"];
-        //
-        // var price = results[i]["latest.cost.tuition.out_of_state"];
-        //
-        // var sat = results[i]["latest.admissions.sat_scores.average.overall"];
-        //
-        // var act = results[i]["latest.admissions.act_scores.midpoint.cumulative"];
-
-
-      //  console.log(responseName);
-      //   let htmlInput = document.getElementById("resultsforjs");
-      //   li.innerHTML = responseName;
-      //   ulSize.innerHTML = "Size: " + size + " students";
-      //   ulPrice.innerHTML = "Price: $" + price;
-      //   ulSAT.innerHTML = "Average SAT Score: " + sat;
-      //   ulACT.innerHTML = "Median ACT Score: " + act;
-      // //  alink.setAttribute("href") = link;
-      //   htmlInput.appendChild(li);
-      //   htmlInput.appendChild(ulSize);
-      //   htmlInput.appendChild(ulPrice);
-      //   htmlInput.appendChild(ulSAT);
-      //   htmlInput.appendChild(ulACT);
-        //htmlInput.appendChild(ulLink);
-
-
-    }
 }
 
 function randomizeResults(response){
