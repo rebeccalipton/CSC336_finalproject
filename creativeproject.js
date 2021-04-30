@@ -439,7 +439,7 @@ const url_end = "&api_key=ACZ6ovhARgLjhpZMPu8YulNwDapdIPtipybia50b";
   }
 
 
-}
+
 
     //clear results section//
     function clearResults() {
